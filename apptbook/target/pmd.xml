@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd version="5.3.5" timestamp="2016-07-10T11:10:30.490">
+<file name="C:\Users\Vijay\workspace\apptbook\src\main\java\edu\pdx\cs410J\pmudgal\Project1.java">
+<violation beginline="5" endline="5" begincolumn="1" endcolumn="48" rule="UnusedImports" ruleset="Import Statements" package="edu.pdx.cs410J.pmudgal" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'javax.swing.plaf.synth.SynthEditorPaneUI'
+</violation>
+<violation beginline="25" endline="25" begincolumn="15" endcolumn="15" rule="UnusedLocalVariable" ruleset="Unused Code" package="edu.pdx.cs410J.pmudgal" class="Project1" method="main" variable="c" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/unusedcode.html#UnusedLocalVariable" priority="3">
+Avoid unused local variables such as 'c'.
+</violation>
+<violation beginline="169" endline="169" begincolumn="28" endcolumn="75" rule="UnusedPrivateMethod" ruleset="Unused Code" package="edu.pdx.cs410J.pmudgal" class="Project1" method="compareEndDateBeginDate" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/unusedcode.html#UnusedPrivateMethod" priority="3">
+Avoid unused private methods such as 'compareEndDateBeginDate(Appointment)'.
+</violation>
+</file>
+<file name="C:\Users\Vijay\workspace\apptbook\src\main\java\edu\pdx\cs410J\pmudgal\TextDumper.java">
+<violation beginline="40" endline="40" begincolumn="46" endcolumn="114" rule="UselessParentheses" ruleset="Unnecessary" package="edu.pdx.cs410J.pmudgal" class="TextDumper" method="dump" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/unnecessary.html#UselessParentheses" priority="4">
+Useless parentheses.
+</violation>
+</file>
+</pmd>

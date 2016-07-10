@@ -42,6 +42,7 @@ public class Project1 {
      * In any error scenario case, and error message is shown and program exits.
      * @param args : Command line Arguments
      * @param appointmentBook : the appointment book which would contain appointments
+     * @return : the correctly formatted appointment with all valid values for the attributes.
      * @throws ParseException : In case of any exception while parsing the dates.
      */
     public static AppointmentBook prepareAppointmentBook(String[] args, AppointmentBook appointmentBook) throws Exception {
@@ -96,7 +97,7 @@ public class Project1 {
      * This method checks if the passed argument is valid Owner
      * or it is some option and not arg.
      * @param arg : ownerName of the appointment
-     * @return
+     * @return owner name
      */
     private static String validateOwnerName(String arg) {
         if(!checkNull(arg, "owner name").startsWith("-")){
@@ -119,9 +120,9 @@ public class Project1 {
     /**
      * This method checks if the passed string is not null
      * and not empty and also make sure that it contains data.
-     * @param string
-     * @param fieldName
-     * @return
+     * @param string : String to be checked as null
+     * @param fieldName : The fieldname from appointment
+     * @return the correct value or he error message
      */
     private static String checkNull(String string, String fieldName){
         if(string!=null && !string.trim().isEmpty() && !string.trim().equals("")){
@@ -139,9 +140,9 @@ public class Project1 {
      *The date and time should be in format "mm/dd/yyyy hh:mm' or "m/d/yyyy hh:mm".
      * This method also check for invalid dates e.g. 13/01/2015 or 12/40/2015.
      * Also enforces the year has to pass with 4 digits.
-     * @param value
-     * @return
-     * @throws ParseException
+     * @param value : the date and time
+     * @return : the correctly formatted date and time
+     * @throws ParseException : Exception while parsing the date and time
      */
     public static String checkDateTimeFormat(String value) throws ParseException {
         if (value == null || !value.matches("^\\d{1,2}/\\d{1,2}/\\d{4} \\d{1,2}:\\d{2}$")) {
@@ -163,7 +164,7 @@ public class Project1 {
      * I have not removed this method as this may be
      * used for future functionality.
      * @param appointment : appointment is passed to compare eend dates and begin dat
-     * @return
+     * @return true if the enddatetime > begindateTime
      */
     private static boolean compareEndDateBeginDate(Appointment appointment){
         if(appointment.getEndTimeString().compareTo(appointment.getBeginTimeString())<1){

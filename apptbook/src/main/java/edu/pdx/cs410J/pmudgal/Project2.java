@@ -3,6 +3,7 @@ package edu.pdx.cs410J.pmudgal;
 import edu.pdx.cs410J.AbstractAppointmentBook;
 import edu.pdx.cs410J.ParserException;
 
+import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -12,12 +13,25 @@ import java.util.Arrays;
  * Created by Priyanka on 7/6/2016.
  */
 public class Project2 {
-
+    /**
+     * This is main method
+     * @param args : Command line arguments which were passed while running program.
+     */
     public static void main(String[] args){
         parseCommandLineArgs(args);
 
     }
 
+    /**
+     * This method checks if there is "-textfile" option present in
+     * command line arguments. If yes, then it checks if the filename
+     * passed in command line args, exists. If no, it created the file.
+     * If yes, it writes the content of appointment in that file by calling
+     * dump() method of TextDumper.
+     * If command line arguments does not have "-textfile" option,
+     * the project processes same as Project 1.
+     * @param args : Command line arguments passed.
+     */
     private static void parseCommandLineArgs(String[] args) {
         Project1 project1=new Project1();
         AppointmentBook appointmentBook = new AppointmentBook();
@@ -33,9 +47,16 @@ public class Project2 {
                 String[] stockArr = new String[arrayList.size()];
                 stockArr = arrayList.toArray(new String[arrayList.size()]);
                 System.out.println(stockArr.length);
-                appointmentBook = dumpTheContentsToFile(filename,stockArr);
-                TextDumper textDumper = new TextDumper(filename);
-                textDumper.dump(appointmentBook);
+                File file = new File(filename);
+                if(file.createNewFile()) {
+                    appointmentBook = dumpTheContentsToFile(filename, stockArr);
+                    TextDumper textDumper = new TextDumper(filename);
+                    textDumper.dump(appointmentBook);
+                } else{
+                    appointmentBook = dumpTheContentsToFile(filename, stockArr);
+                    TextDumper textDumper = new TextDumper(filename);
+                    textDumper.dump(appointmentBook);
+                }
             }else{
                 project1.prepareAppointmentBook(args,appointmentBook);
             }
@@ -93,6 +114,16 @@ public class Project2 {
 
     }
 */
+
+    /**
+     * This method calls the parse() method of TextParser by passing
+     * filename and command line args. After parsing, it also calls
+     * prepareAppointmentBook() method of Project1.
+     * @param filename : Filename which contains appointments
+     * @param args : command line args
+     * @return : AppointmentBook
+     * @throws Exception : In case of any exception, regarding parsing the file.
+     */
     public static AppointmentBook dumpTheContentsToFile(String filename, String[] args) throws Exception {
         Project1 project1 =new Project1();
         AbstractAppointmentBook appointmentBook = new AppointmentBook();

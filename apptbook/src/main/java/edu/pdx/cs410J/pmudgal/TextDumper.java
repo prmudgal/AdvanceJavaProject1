@@ -12,16 +12,27 @@ import java.util.ArrayList;
 public class TextDumper implements AppointmentBookDumper {
     String filename;
 
+    /**
+     * Parameterized constructor
+     * @param filename : File in which appointments are to to be written.
+     */
     public TextDumper(String filename){
         this.filename=filename;
     }
 
+    /**
+     * Overridden method of AppointmentBookDumper.
+     * This method writes the appointments to the
+     * file by calling writeToFile() method.
+     * @param abstractAppointmentBook : instance of AppointmentBook
+     * @throws IOException : Handles IO Exception in case of file wrting.
+     */
     @Override
     public void dump(AbstractAppointmentBook abstractAppointmentBook) throws IOException {
         try {
             //Whatever the file path is.
             File file = new File(filename);
-            if(file.createNewFile()) {
+//            if(file.createNewFile()) {
                 System.out.println("Created new file");
                 FileOutputStream is = new FileOutputStream(file);
                 OutputStreamWriter osw = new OutputStreamWriter(is);
@@ -30,16 +41,16 @@ public class TextDumper implements AppointmentBookDumper {
                     writeToFile(w, appointment);
                 }
                 w.close();
-            }else{
-                System.out.println("File already exists");
+//            }else{
+              /*  System.out.println("File already exists");
                 FileOutputStream is = new FileOutputStream(file);
                 OutputStreamWriter osw = new OutputStreamWriter(is);
                 BufferedWriter w = new BufferedWriter(osw);
                 for(Appointment appointment:(new ArrayList<Appointment>(abstractAppointmentBook.getAppointments()))){
                     writeToFile(w, appointment);
                 }
-                w.close();
-            }
+                w.close();*/
+//            }
         } catch (IOException e) {
             e.getMessage();
             System.err.println("Problem writing to the file :" + filename);
@@ -47,6 +58,13 @@ public class TextDumper implements AppointmentBookDumper {
         }
     }
 
+    /**
+     * This method takes the individual field from appointment
+     * and writes it to file using bufferedWriter separated by comma.
+     * @param w : BfferedWriter
+     * @param appointment : instance of Appointment
+     * @throws IOException : handles while writing file.
+     */
     private static void writeToFile(BufferedWriter w, Appointment appointment) throws IOException {
         w.write(appointment.getOwner());
         w.write(",");

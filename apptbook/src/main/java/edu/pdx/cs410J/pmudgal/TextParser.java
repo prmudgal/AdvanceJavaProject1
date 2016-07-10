@@ -18,11 +18,24 @@ public class TextParser implements AppointmentBookParser {
     String filename;
     AppointmentBook appointmentBook;
 
+    /**
+     * Parameterized Constructor
+     * @param filename : File containing appointments
+     * @param appointmentBook : ApointmentBook having appointments
+     */
     public TextParser(String filename, AppointmentBook appointmentBook){
         this.filename=filename;
         this.appointmentBook=appointmentBook;
     }
 
+    /**
+     * This method is reading the contents of file and checking
+     * if evryting in file is well formatted. And add the content
+     * of the file to appointmentBook.
+     * @return AbstractAppointmentBook
+     * @throws ParserException : Exception if issues in parsing
+     * the file.
+     */
     @Override
     public AbstractAppointmentBook parse() throws ParserException {
         BufferedReader br =null;
@@ -43,7 +56,7 @@ public class TextParser implements AppointmentBookParser {
                 }
             }
         } catch(Exception e){
-            e.getMessage();
+            e.printStackTrace();
         }
         finally {
             try {
