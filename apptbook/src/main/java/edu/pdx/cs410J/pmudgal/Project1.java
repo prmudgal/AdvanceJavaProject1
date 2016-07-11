@@ -77,7 +77,7 @@ public class Project1 {
                     System.out.println(appointment.getDescription());
                     System.out.println(appointment.getBeginTimeString());
                     System.out.println(appointment.getEndTimeString());
-//                    System.out.println(appointment.toString());
+                    System.out.println(appointment.toString());
                 } else if( args.length - i < 6){
                     System.out.println("Some arguments are missing. Please provide complete arguments : owner description beginDateTime endDateTime");
                     System.exit(1);

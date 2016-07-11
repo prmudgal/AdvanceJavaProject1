@@ -1,16 +1,13 @@
 package edu.pdx.cs410J.pmudgal;
 
-import com.sun.xml.internal.ws.util.StringUtils;
 import edu.pdx.cs410J.AbstractAppointmentBook;
 import edu.pdx.cs410J.AppointmentBookParser;
 import edu.pdx.cs410J.ParserException;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.nio.charset.MalformedInputException;
-import java.nio.file.FileSystemException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.text.ParseException;
@@ -45,12 +42,16 @@ public class TextParser implements AppointmentBookParser {
     public AbstractAppointmentBook parse() throws ParserException {
         BufferedReader br =null;
         try {
-           br=new BufferedReader(new FileReader(filename));
+            File file =new File(filename);
+            if(file.exists() && file.length() == 0){
+                throw new IOException("The file seems to be exist, " +
+                        "but it is empty and considered as malformatted. We ca not write into this file. ");
+            }
+           br=new BufferedReader(new FileReader(file));
             for(String line : Files.readAllLines(Paths.get(filename))){
                 System.out.println(" inside for : " + line);
                 StringTokenizer stringTokenizer = new StringTokenizer(line, ",");
                 if(line!=null && !line.isEmpty() && countDelimiters(line) ==3) {
-                    System.out.println("Inside if");
                     Appointment appointment = new Appointment();
                     while (stringTokenizer.hasMoreTokens()) {
                         appointment.setOwner(Project1.checkNull(stringTokenizer.nextToken(),"owner name"));
@@ -61,7 +62,9 @@ public class TextParser implements AppointmentBookParser {
                         appointmentBook.addAppointment(appointment);
                     }
                 } else{
-                    throw new IOException("The file seems to be empty/malformed.");
+                    throw new IOException("The file seems to be malformed." +
+                            " The file either has more commas or values in it." +
+                            " Please correct it and try again.");
 
                 }
             }
@@ -73,6 +76,7 @@ public class TextParser implements AppointmentBookParser {
                 br.close();
             } catch (IOException e) {
                 System.out.println(e.getMessage());
+                System.exit(1);
             }
         }
         System.out.println(appointmentBook.getAppointments().size() + " Size");

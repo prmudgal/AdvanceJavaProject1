@@ -49,11 +49,11 @@ public class Project2 {
                 System.out.println(stockArr.length);
                 File file = new File(filename);
                 if(file.createNewFile()) {
-                    appointmentBook = dumpTheContentsToFile(filename, stockArr);
+                    appointmentBook = parseAndPrepareTheContentsOfFile(filename, stockArr);
                     TextDumper textDumper = new TextDumper(filename);
                     textDumper.dump(appointmentBook);
                 } else{
-                    appointmentBook = dumpTheContentsToFile(filename, stockArr);
+                    appointmentBook = parseAndPrepareTheContentsOfFile(filename, stockArr);
                     TextDumper textDumper = new TextDumper(filename);
                     textDumper.dump(appointmentBook);
                 }
@@ -61,11 +61,11 @@ public class Project2 {
                 project1.prepareAppointmentBook(args,appointmentBook);
             }
         } catch (ParseException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         } catch (ParserException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -80,7 +80,7 @@ public class Project2 {
      * @return : AppointmentBook
      * @throws Exception : In case of any exception, regarding parsing the file.
      */
-    public static AppointmentBook dumpTheContentsToFile(String filename, String[] args) throws Exception {
+    public static AppointmentBook parseAndPrepareTheContentsOfFile(String filename, String[] args) throws Exception {
         Project1 project1 =new Project1();
         AbstractAppointmentBook appointmentBook = new AppointmentBook();
         TextParser textParser = new TextParser(filename, (AppointmentBook) appointmentBook);

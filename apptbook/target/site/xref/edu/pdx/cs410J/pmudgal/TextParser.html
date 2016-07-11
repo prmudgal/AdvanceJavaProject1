@@ -13,70 +13,99 @@
 <a class="jxr_linenumber" name="L5" href="#L5">5</a>   <strong class="jxr_keyword">import</strong> edu.pdx.cs410J.ParserException;
 <a class="jxr_linenumber" name="L6" href="#L6">6</a>   
 <a class="jxr_linenumber" name="L7" href="#L7">7</a>   <strong class="jxr_keyword">import</strong> java.io.BufferedReader;
-<a class="jxr_linenumber" name="L8" href="#L8">8</a>   <strong class="jxr_keyword">import</strong> java.io.FileReader;
-<a class="jxr_linenumber" name="L9" href="#L9">9</a>   <strong class="jxr_keyword">import</strong> java.io.IOException;
-<a class="jxr_linenumber" name="L10" href="#L10">10</a>  <strong class="jxr_keyword">import</strong> java.nio.file.Files;
-<a class="jxr_linenumber" name="L11" href="#L11">11</a>  <strong class="jxr_keyword">import</strong> java.nio.file.Paths;
-<a class="jxr_linenumber" name="L12" href="#L12">12</a>  <strong class="jxr_keyword">import</strong> java.util.StringTokenizer;
-<a class="jxr_linenumber" name="L13" href="#L13">13</a>  
-<a class="jxr_linenumber" name="L14" href="#L14">14</a>  <em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="L15" href="#L15">15</a>  <em class="jxr_javadoccomment"> * Created by Priyanka on 7/6/2016.</em>
-<a class="jxr_linenumber" name="L16" href="#L16">16</a>  <em class="jxr_javadoccomment"> */</em>
-<a class="jxr_linenumber" name="L17" href="#L17">17</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../edu/pdx/cs410J/pmudgal/TextParser.html">TextParser</a> <strong class="jxr_keyword">implements</strong> AppointmentBookParser {
-<a class="jxr_linenumber" name="L18" href="#L18">18</a>      String filename;
-<a class="jxr_linenumber" name="L19" href="#L19">19</a>      <a href="../../../../edu/pdx/cs410J/pmudgal/AppointmentBook.html">AppointmentBook</a> appointmentBook;
-<a class="jxr_linenumber" name="L20" href="#L20">20</a>  
-<a class="jxr_linenumber" name="L21" href="#L21">21</a>      <em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="L22" href="#L22">22</a>  <em class="jxr_javadoccomment">     * Parameterized Constructor</em>
-<a class="jxr_linenumber" name="L23" href="#L23">23</a>  <em class="jxr_javadoccomment">     * @param filename : File containing appointments</em>
-<a class="jxr_linenumber" name="L24" href="#L24">24</a>  <em class="jxr_javadoccomment">     * @param appointmentBook : ApointmentBook having appointments</em>
-<a class="jxr_linenumber" name="L25" href="#L25">25</a>  <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="L26" href="#L26">26</a>      <strong class="jxr_keyword">public</strong> <a href="../../../../edu/pdx/cs410J/pmudgal/TextParser.html">TextParser</a>(String filename, <a href="../../../../edu/pdx/cs410J/pmudgal/AppointmentBook.html">AppointmentBook</a> appointmentBook){
-<a class="jxr_linenumber" name="L27" href="#L27">27</a>          <strong class="jxr_keyword">this</strong>.filename=filename;
-<a class="jxr_linenumber" name="L28" href="#L28">28</a>          <strong class="jxr_keyword">this</strong>.appointmentBook=appointmentBook;
-<a class="jxr_linenumber" name="L29" href="#L29">29</a>      }
-<a class="jxr_linenumber" name="L30" href="#L30">30</a>  
-<a class="jxr_linenumber" name="L31" href="#L31">31</a>      <em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="L32" href="#L32">32</a>  <em class="jxr_javadoccomment">     * This method is reading the contents of file and checking</em>
-<a class="jxr_linenumber" name="L33" href="#L33">33</a>  <em class="jxr_javadoccomment">     * if evryting in file is well formatted. And add the content</em>
-<a class="jxr_linenumber" name="L34" href="#L34">34</a>  <em class="jxr_javadoccomment">     * of the file to appointmentBook.</em>
-<a class="jxr_linenumber" name="L35" href="#L35">35</a>  <em class="jxr_javadoccomment">     * @return AbstractAppointmentBook</em>
-<a class="jxr_linenumber" name="L36" href="#L36">36</a>  <em class="jxr_javadoccomment">     * @throws ParserException : Exception if issues in parsing</em>
-<a class="jxr_linenumber" name="L37" href="#L37">37</a>  <em class="jxr_javadoccomment">     * the file.</em>
-<a class="jxr_linenumber" name="L38" href="#L38">38</a>  <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="L39" href="#L39">39</a>      @Override
-<a class="jxr_linenumber" name="L40" href="#L40">40</a>      <strong class="jxr_keyword">public</strong> AbstractAppointmentBook parse() <strong class="jxr_keyword">throws</strong> ParserException {
-<a class="jxr_linenumber" name="L41" href="#L41">41</a>          BufferedReader br =<strong class="jxr_keyword">null</strong>;
-<a class="jxr_linenumber" name="L42" href="#L42">42</a>          <strong class="jxr_keyword">try</strong> {
-<a class="jxr_linenumber" name="L43" href="#L43">43</a>             br=<strong class="jxr_keyword">new</strong> BufferedReader(<strong class="jxr_keyword">new</strong> FileReader(filename));
-<a class="jxr_linenumber" name="L44" href="#L44">44</a>              <strong class="jxr_keyword">for</strong>(String line : Files.readAllLines(Paths.get(filename))){
-<a class="jxr_linenumber" name="L45" href="#L45">45</a>                  <strong class="jxr_keyword">if</strong>(line!=<strong class="jxr_keyword">null</strong> &amp;&amp; !line.isEmpty())
-<a class="jxr_linenumber" name="L46" href="#L46">46</a>                      System.out.println(<span class="jxr_string">" inside for : "</span>+ line);
-<a class="jxr_linenumber" name="L47" href="#L47">47</a>                  StringTokenizer stringTokenizer = <strong class="jxr_keyword">new</strong> StringTokenizer(line,<span class="jxr_string">","</span>);
-<a class="jxr_linenumber" name="L48" href="#L48">48</a>                  <a href="../../../../edu/pdx/cs410J/pmudgal/Appointment.html">Appointment</a> appointment =<strong class="jxr_keyword">new</strong> <a href="../../../../edu/pdx/cs410J/pmudgal/Appointment.html">Appointment</a>();
-<a class="jxr_linenumber" name="L49" href="#L49">49</a>                  <strong class="jxr_keyword">while</strong>(stringTokenizer.hasMoreTokens()){
-<a class="jxr_linenumber" name="L50" href="#L50">50</a>                      appointment.setOwner(stringTokenizer.nextToken());
-<a class="jxr_linenumber" name="L51" href="#L51">51</a>                      appointment.setDescription(stringTokenizer.nextToken());
-<a class="jxr_linenumber" name="L52" href="#L52">52</a>                      appointment.setBeginTimeString(Project1.checkDateTimeFormat(stringTokenizer.nextToken()));
-<a class="jxr_linenumber" name="L53" href="#L53">53</a>                      appointment.setEndTimeString(Project1.checkDateTimeFormat(stringTokenizer.nextToken()));
-<a class="jxr_linenumber" name="L54" href="#L54">54</a>                      appointmentBook.setOwnerName(appointment.getOwner());
-<a class="jxr_linenumber" name="L55" href="#L55">55</a>                      appointmentBook.addAppointment(appointment);
-<a class="jxr_linenumber" name="L56" href="#L56">56</a>                  }
-<a class="jxr_linenumber" name="L57" href="#L57">57</a>              }
-<a class="jxr_linenumber" name="L58" href="#L58">58</a>          } <strong class="jxr_keyword">catch</strong>(Exception e){
-<a class="jxr_linenumber" name="L59" href="#L59">59</a>              e.printStackTrace();
-<a class="jxr_linenumber" name="L60" href="#L60">60</a>          }
-<a class="jxr_linenumber" name="L61" href="#L61">61</a>          <strong class="jxr_keyword">finally</strong> {
-<a class="jxr_linenumber" name="L62" href="#L62">62</a>              <strong class="jxr_keyword">try</strong> {
-<a class="jxr_linenumber" name="L63" href="#L63">63</a>                  br.close();
-<a class="jxr_linenumber" name="L64" href="#L64">64</a>              } <strong class="jxr_keyword">catch</strong> (IOException e) {
-<a class="jxr_linenumber" name="L65" href="#L65">65</a>                  e.printStackTrace();
-<a class="jxr_linenumber" name="L66" href="#L66">66</a>              }
-<a class="jxr_linenumber" name="L67" href="#L67">67</a>          }
-<a class="jxr_linenumber" name="L68" href="#L68">68</a>          System.out.println(appointmentBook.getAppointments().size() + <span class="jxr_string">" Size"</span>);
-<a class="jxr_linenumber" name="L69" href="#L69">69</a>          <strong class="jxr_keyword">return</strong> appointmentBook;
-<a class="jxr_linenumber" name="L70" href="#L70">70</a>      }
-<a class="jxr_linenumber" name="L71" href="#L71">71</a>  }
+<a class="jxr_linenumber" name="L8" href="#L8">8</a>   <strong class="jxr_keyword">import</strong> java.io.File;
+<a class="jxr_linenumber" name="L9" href="#L9">9</a>   <strong class="jxr_keyword">import</strong> java.io.FileReader;
+<a class="jxr_linenumber" name="L10" href="#L10">10</a>  <strong class="jxr_keyword">import</strong> java.io.IOException;
+<a class="jxr_linenumber" name="L11" href="#L11">11</a>  <strong class="jxr_keyword">import</strong> java.nio.file.Files;
+<a class="jxr_linenumber" name="L12" href="#L12">12</a>  <strong class="jxr_keyword">import</strong> java.nio.file.Paths;
+<a class="jxr_linenumber" name="L13" href="#L13">13</a>  <strong class="jxr_keyword">import</strong> java.text.ParseException;
+<a class="jxr_linenumber" name="L14" href="#L14">14</a>  <strong class="jxr_keyword">import</strong> java.util.StringTokenizer;
+<a class="jxr_linenumber" name="L15" href="#L15">15</a>  
+<a class="jxr_linenumber" name="L16" href="#L16">16</a>  <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L17" href="#L17">17</a>  <em class="jxr_javadoccomment"> * Created by Priyanka on 7/6/2016.</em>
+<a class="jxr_linenumber" name="L18" href="#L18">18</a>  <em class="jxr_javadoccomment"> */</em>
+<a class="jxr_linenumber" name="L19" href="#L19">19</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../edu/pdx/cs410J/pmudgal/TextParser.html">TextParser</a> <strong class="jxr_keyword">implements</strong> AppointmentBookParser {
+<a class="jxr_linenumber" name="L20" href="#L20">20</a>      String filename;
+<a class="jxr_linenumber" name="L21" href="#L21">21</a>      <a href="../../../../edu/pdx/cs410J/pmudgal/AppointmentBook.html">AppointmentBook</a> appointmentBook;
+<a class="jxr_linenumber" name="L22" href="#L22">22</a>  
+<a class="jxr_linenumber" name="L23" href="#L23">23</a>      <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L24" href="#L24">24</a>  <em class="jxr_javadoccomment">     * Parameterized Constructor</em>
+<a class="jxr_linenumber" name="L25" href="#L25">25</a>  <em class="jxr_javadoccomment">     * @param filename : File containing appointments</em>
+<a class="jxr_linenumber" name="L26" href="#L26">26</a>  <em class="jxr_javadoccomment">     * @param appointmentBook : ApointmentBook having appointments</em>
+<a class="jxr_linenumber" name="L27" href="#L27">27</a>  <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L28" href="#L28">28</a>      <strong class="jxr_keyword">public</strong> <a href="../../../../edu/pdx/cs410J/pmudgal/TextParser.html">TextParser</a>(String filename, <a href="../../../../edu/pdx/cs410J/pmudgal/AppointmentBook.html">AppointmentBook</a> appointmentBook){
+<a class="jxr_linenumber" name="L29" href="#L29">29</a>          <strong class="jxr_keyword">this</strong>.filename=filename;
+<a class="jxr_linenumber" name="L30" href="#L30">30</a>          <strong class="jxr_keyword">this</strong>.appointmentBook=appointmentBook;
+<a class="jxr_linenumber" name="L31" href="#L31">31</a>      }
+<a class="jxr_linenumber" name="L32" href="#L32">32</a>  
+<a class="jxr_linenumber" name="L33" href="#L33">33</a>      <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L34" href="#L34">34</a>  <em class="jxr_javadoccomment">     * This method is reading the contents of file and checking</em>
+<a class="jxr_linenumber" name="L35" href="#L35">35</a>  <em class="jxr_javadoccomment">     * if everything in file is well formatted. And add the content</em>
+<a class="jxr_linenumber" name="L36" href="#L36">36</a>  <em class="jxr_javadoccomment">     * of the file to appointmentBook.</em>
+<a class="jxr_linenumber" name="L37" href="#L37">37</a>  <em class="jxr_javadoccomment">     * @return AbstractAppointmentBook</em>
+<a class="jxr_linenumber" name="L38" href="#L38">38</a>  <em class="jxr_javadoccomment">     * @throws ParserException : Exception if issues in parsing</em>
+<a class="jxr_linenumber" name="L39" href="#L39">39</a>  <em class="jxr_javadoccomment">     * the file.</em>
+<a class="jxr_linenumber" name="L40" href="#L40">40</a>  <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L41" href="#L41">41</a>      @Override
+<a class="jxr_linenumber" name="L42" href="#L42">42</a>      <strong class="jxr_keyword">public</strong> AbstractAppointmentBook parse() <strong class="jxr_keyword">throws</strong> ParserException {
+<a class="jxr_linenumber" name="L43" href="#L43">43</a>          BufferedReader br =<strong class="jxr_keyword">null</strong>;
+<a class="jxr_linenumber" name="L44" href="#L44">44</a>          <strong class="jxr_keyword">try</strong> {
+<a class="jxr_linenumber" name="L45" href="#L45">45</a>              File file =<strong class="jxr_keyword">new</strong> File(filename);
+<a class="jxr_linenumber" name="L46" href="#L46">46</a>              <strong class="jxr_keyword">if</strong>(file.exists() &amp;&amp; file.length() == 0){
+<a class="jxr_linenumber" name="L47" href="#L47">47</a>                  <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> IOException(<span class="jxr_string">"The file seems to be exist, "</span> +
+<a class="jxr_linenumber" name="L48" href="#L48">48</a>                          <span class="jxr_string">"but it is empty and considered as malformatted. We ca not write into this file. "</span>);
+<a class="jxr_linenumber" name="L49" href="#L49">49</a>              }
+<a class="jxr_linenumber" name="L50" href="#L50">50</a>             br=<strong class="jxr_keyword">new</strong> BufferedReader(<strong class="jxr_keyword">new</strong> FileReader(file));
+<a class="jxr_linenumber" name="L51" href="#L51">51</a>              <strong class="jxr_keyword">for</strong>(String line : Files.readAllLines(Paths.get(filename))){
+<a class="jxr_linenumber" name="L52" href="#L52">52</a>                  System.out.println(<span class="jxr_string">" inside for : "</span> + line);
+<a class="jxr_linenumber" name="L53" href="#L53">53</a>                  StringTokenizer stringTokenizer = <strong class="jxr_keyword">new</strong> StringTokenizer(line, <span class="jxr_string">","</span>);
+<a class="jxr_linenumber" name="L54" href="#L54">54</a>                  <strong class="jxr_keyword">if</strong>(line!=<strong class="jxr_keyword">null</strong> &amp;&amp; !line.isEmpty() &amp;&amp; countDelimiters(line) ==3) {
+<a class="jxr_linenumber" name="L55" href="#L55">55</a>                      <a href="../../../../edu/pdx/cs410J/pmudgal/Appointment.html">Appointment</a> appointment = <strong class="jxr_keyword">new</strong> <a href="../../../../edu/pdx/cs410J/pmudgal/Appointment.html">Appointment</a>();
+<a class="jxr_linenumber" name="L56" href="#L56">56</a>                      <strong class="jxr_keyword">while</strong> (stringTokenizer.hasMoreTokens()) {
+<a class="jxr_linenumber" name="L57" href="#L57">57</a>                          appointment.setOwner(Project1.checkNull(stringTokenizer.nextToken(),<span class="jxr_string">"owner name"</span>));
+<a class="jxr_linenumber" name="L58" href="#L58">58</a>                          appointment.setDescription(Project1.checkNull(stringTokenizer.nextToken(),<span class="jxr_string">"description"</span>));
+<a class="jxr_linenumber" name="L59" href="#L59">59</a>                          appointment.setBeginTimeString(Project1.checkDateTimeFormat(stringTokenizer.nextToken()));
+<a class="jxr_linenumber" name="L60" href="#L60">60</a>                          appointment.setEndTimeString(Project1.checkDateTimeFormat(stringTokenizer.nextToken()));
+<a class="jxr_linenumber" name="L61" href="#L61">61</a>                          appointmentBook.setOwnerName(appointment.getOwner());
+<a class="jxr_linenumber" name="L62" href="#L62">62</a>                          appointmentBook.addAppointment(appointment);
+<a class="jxr_linenumber" name="L63" href="#L63">63</a>                      }
+<a class="jxr_linenumber" name="L64" href="#L64">64</a>                  } <strong class="jxr_keyword">else</strong>{
+<a class="jxr_linenumber" name="L65" href="#L65">65</a>                      <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> IOException(<span class="jxr_string">"The file seems to be malformed."</span> +
+<a class="jxr_linenumber" name="L66" href="#L66">66</a>                              <span class="jxr_string">" The file either has more commas or values in it."</span> +
+<a class="jxr_linenumber" name="L67" href="#L67">67</a>                              <span class="jxr_string">" Please correct it and try again."</span>);
+<a class="jxr_linenumber" name="L68" href="#L68">68</a>  
+<a class="jxr_linenumber" name="L69" href="#L69">69</a>                  }
+<a class="jxr_linenumber" name="L70" href="#L70">70</a>              }
+<a class="jxr_linenumber" name="L71" href="#L71">71</a>          }  <strong class="jxr_keyword">catch</strong> (ParseException|IOException e) {
+<a class="jxr_linenumber" name="L72" href="#L72">72</a>              System.out.println(e.getMessage());
+<a class="jxr_linenumber" name="L73" href="#L73">73</a>              System.exit(1);
+<a class="jxr_linenumber" name="L74" href="#L74">74</a>          } <strong class="jxr_keyword">finally</strong> {
+<a class="jxr_linenumber" name="L75" href="#L75">75</a>              <strong class="jxr_keyword">try</strong> {
+<a class="jxr_linenumber" name="L76" href="#L76">76</a>                  br.close();
+<a class="jxr_linenumber" name="L77" href="#L77">77</a>              } <strong class="jxr_keyword">catch</strong> (IOException e) {
+<a class="jxr_linenumber" name="L78" href="#L78">78</a>                  System.out.println(e.getMessage());
+<a class="jxr_linenumber" name="L79" href="#L79">79</a>                  System.exit(1);
+<a class="jxr_linenumber" name="L80" href="#L80">80</a>              }
+<a class="jxr_linenumber" name="L81" href="#L81">81</a>          }
+<a class="jxr_linenumber" name="L82" href="#L82">82</a>          System.out.println(appointmentBook.getAppointments().size() + <span class="jxr_string">" Size"</span>);
+<a class="jxr_linenumber" name="L83" href="#L83">83</a>          <strong class="jxr_keyword">return</strong> appointmentBook;
+<a class="jxr_linenumber" name="L84" href="#L84">84</a>      }
+<a class="jxr_linenumber" name="L85" href="#L85">85</a>  
+<a class="jxr_linenumber" name="L86" href="#L86">86</a>      <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L87" href="#L87">87</a>  <em class="jxr_javadoccomment">     * This method counts the number of deimiters which is comma.</em>
+<a class="jxr_linenumber" name="L88" href="#L88">88</a>  <em class="jxr_javadoccomment">     * @param line : line from file</em>
+<a class="jxr_linenumber" name="L89" href="#L89">89</a>  <em class="jxr_javadoccomment">     * @return counter: number of comma</em>
+<a class="jxr_linenumber" name="L90" href="#L90">90</a>  <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L91" href="#L91">91</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">int</strong> countDelimiters(String line){
+<a class="jxr_linenumber" name="L92" href="#L92">92</a>          <strong class="jxr_keyword">int</strong> counter = 0;
+<a class="jxr_linenumber" name="L93" href="#L93">93</a>          <strong class="jxr_keyword">for</strong> (Character c: line.toCharArray()) {
+<a class="jxr_linenumber" name="L94" href="#L94">94</a>              <strong class="jxr_keyword">if</strong> (c.equals(',')) {
+<a class="jxr_linenumber" name="L95" href="#L95">95</a>                  counter++;
+<a class="jxr_linenumber" name="L96" href="#L96">96</a>              }
+<a class="jxr_linenumber" name="L97" href="#L97">97</a>          }
+<a class="jxr_linenumber" name="L98" href="#L98">98</a>          <strong class="jxr_keyword">return</strong> counter;
+<a class="jxr_linenumber" name="L99" href="#L99">99</a>      }
+<a class="jxr_linenumber" name="L100" href="#L100">100</a> }
 </pre>
 <hr/>
 <div id="footer">Copyright &#169; 2000&#x2013;2016 <a href="http://www.pdx.edu">Portland State University</a>. All rights reserved.</div>
