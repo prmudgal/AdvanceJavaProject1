@@ -43,11 +43,7 @@ public class TextParser implements AppointmentBookParser {
         BufferedReader br =null;
         try {
             File file =new File(filename);
-            if(file.exists() && file.length() == 0){
-                throw new IOException("The file seems to be exist, " +
-                        "but it is empty and considered as malformatted. We ca not write into this file. ");
-            }
-           br=new BufferedReader(new FileReader(file));
+            br=new BufferedReader(new FileReader(file));
             for(String line : Files.readAllLines(Paths.get(filename))){
                 System.out.println(" inside for : " + line);
                 StringTokenizer stringTokenizer = new StringTokenizer(line, ",");

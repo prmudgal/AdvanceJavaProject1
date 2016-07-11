@@ -10,8 +10,15 @@ public class Constants {
     public static final String PROVIDE_ARG="Please provide the arguments in order: owner description beginDateTime endDateTime";
 
     public static final String README_DESC="This is PROJECT1 written by PRIYANKA MUDGAL.\n" +
+            "It is now behaving as Project 1. If you want to read README of project 2, please add -textfile filename as the option. \n"+
             " The motive of this project is to prepare an appointment book containing the owner name, description, begintime and endTime.\n" +
             " The project provides an additional functionality to print the description or just print the README.\n";
+
+    public static final String PROJECT2_README_DESC="This is PROJECT2 written by PRIYANKA MUDGAL.\n" +
+            "The motive of this project is to prepare an appointment book containing the owner name, description, begintime and endTime.\n" +
+            "The project provides an additional functionality to print the description or just print the README.\n" +
+            "This projects also creates a text file with all/single appointments of the owner.\n"+
+            "It also makes sure that a appointmentbook belongs to a single owner only.\n ";
 
     public static final String usage=" java edu.pdx.cs410J.pmudgal.Project1 [options] <args>\n" +
             "args are (in this order):\n" +

@@ -73,10 +73,10 @@ public class Project1 {
                         throw new Exception("Owner name is different than the one in Book");
                     }
                     appointmentBook.addAppointment(appointment);
-                    System.out.println(appointment.getOwner());
-                    System.out.println(appointment.getDescription());
-                    System.out.println(appointment.getBeginTimeString());
-                    System.out.println(appointment.getEndTimeString());
+//                    System.out.println(appointment.getOwner());
+//                    System.out.println(appointment.getDescription());
+//                    System.out.println(appointment.getBeginTimeString());
+//                    System.out.println(appointment.getEndTimeString());
                     System.out.println(appointment.toString());
                 } else if( args.length - i < 6){
                     System.out.println("Some arguments are missing. Please provide complete arguments : owner description beginDateTime endDateTime");

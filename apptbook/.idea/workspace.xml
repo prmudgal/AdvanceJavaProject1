@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1f34718f-1ce0-4640-babc-bea79d50edd3" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/apptbook.iml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/dictionaries/Vijay.xml" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/target/checkstyle-cachefile" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/target/checkstyle-checker.xml" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/target/checkstyle-header.txt" afterPath="" />
@@ -182,7 +180,6 @@
       <change type="DELETED" beforePath="$PROJECT_DIR$/target/site/xref/overview-frame.html" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/target/site/xref/overview-summary.html" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/target/site/xref/stylesheet.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/edu/pdx/cs410J/pmudgal/Project1IT.class" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/../koans/.idea/libraries/Maven__com_sandwich_koans_lib_Summer2016.xml" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/../koans/.idea/modules.xml" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apptbook-1.0-SNAPSHOT-shaded.jar" afterPath="$PROJECT_DIR$/target/apptbook-1.0-SNAPSHOT-shaded.jar" />
@@ -190,28 +187,18 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apptbook-1.0-SNAPSHOT-test-sources.jar" afterPath="$PROJECT_DIR$/target/apptbook-1.0-SNAPSHOT-test-sources.jar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apptbook-1.0-SNAPSHOT-tests.jar" afterPath="$PROJECT_DIR$/target/apptbook-1.0-SNAPSHOT-tests.jar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apptbook-1.0-SNAPSHOT.jar" afterPath="$PROJECT_DIR$/target/apptbook-1.0-SNAPSHOT.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/edu/pdx/cs410J/pmudgal/Constants.class" afterPath="$PROJECT_DIR$/target/classes/edu/pdx/cs410J/pmudgal/Constants.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/edu/pdx/cs410J/pmudgal/Project1.class" afterPath="$PROJECT_DIR$/target/classes/edu/pdx/cs410J/pmudgal/Project1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/edu/pdx/cs410J/pmudgal/Project2.class" afterPath="$PROJECT_DIR$/target/classes/edu/pdx/cs410J/pmudgal/Project2.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/edu/pdx/cs410J/pmudgal/TextParser.class" afterPath="$PROJECT_DIR$/target/classes/edu/pdx/cs410J/pmudgal/TextParser.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/original-apptbook-1.0-SNAPSHOT.jar" afterPath="$PROJECT_DIR$/target/original-apptbook-1.0-SNAPSHOT.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apptbook.iml" afterPath="$PROJECT_DIR$/apptbook.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/123.txt" afterPath="$PROJECT_DIR$/123.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/edu/pdx/cs410J/pmudgal/Constants.java" afterPath="$PROJECT_DIR$/src/main/java/edu/pdx/cs410J/pmudgal/Constants.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/edu/pdx/cs410J/pmudgal/Project1.java" afterPath="$PROJECT_DIR$/src/main/java/edu/pdx/cs410J/pmudgal/Project1.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/edu/pdx/cs410J/pmudgal/Project2.java" afterPath="$PROJECT_DIR$/src/main/java/edu/pdx/cs410J/pmudgal/Project2.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/edu/pdx/cs410J/pmudgal/TextParser.java" afterPath="$PROJECT_DIR$/src/main/java/edu/pdx/cs410J/pmudgal/TextParser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/failsafe-reports/failsafe-summary.xml" afterPath="$PROJECT_DIR$/target/failsafe-reports/failsafe-summary.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/compile-integration-test/createdFiles.lst" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/compile-integration-test/createdFiles.lst" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/compile-integration-test/inputFiles.lst" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/compile-integration-test/inputFiles.lst" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-edu.pdx.cs410J.pmudgal.Project2Test.xml" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-edu.pdx.cs410J.pmudgal.Project2Test.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/surefire-reports/edu.pdx.cs410J.pmudgal.Project2Test.txt" afterPath="$PROJECT_DIR$/target/surefire-reports/edu.pdx.cs410J.pmudgal.Project2Test.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../koans/.idea/compiler.xml" afterPath="$PROJECT_DIR$/../koans/.idea/compiler.xml" />
@@ -239,11 +226,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Project1.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Project1.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/edu/pdx/cs410J/pmudgal/Project1.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2414">
-              <caret line="150" column="75" selection-start-line="150" selection-start-column="75" selection-end-line="150" selection-end-column="75" />
+            <state relative-caret-position="323">
+              <caret line="69" column="21" selection-start-line="69" selection-start-column="21" selection-end-line="69" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -264,8 +251,8 @@
       <file leaf-file-name="TextParser.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/edu/pdx/cs410J/pmudgal/TextParser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="251">
-              <caret line="58" column="72" selection-start-line="58" selection-start-column="72" selection-end-line="58" selection-end-column="72" />
+            <state relative-caret-position="166">
+              <caret line="50" column="52" selection-start-line="50" selection-start-column="52" selection-end-line="50" selection-end-column="52" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -276,8 +263,18 @@
       <file leaf-file-name="Project2.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/edu/pdx/cs410J/pmudgal/Project2.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="302">
-              <caret line="86" column="38" selection-start-line="86" selection-start-column="38" selection-end-line="86" selection-end-column="38" />
+            <state relative-caret-position="421">
+              <caret line="64" column="65" selection-start-line="64" selection-start-column="65" selection-end-line="64" selection-end-column="65" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Constants.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/edu/pdx/cs410J/pmudgal/Constants.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -297,8 +294,9 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/main/java/edu/pdx/cs410J/pmudgal/Project1.java" />
-        <option value="$PROJECT_DIR$/src/main/java/edu/pdx/cs410J/pmudgal/Project2.java" />
         <option value="$PROJECT_DIR$/src/main/java/edu/pdx/cs410J/pmudgal/TextParser.java" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/pdx/cs410J/pmudgal/Project2.java" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/pdx/cs410J/pmudgal/Constants.java" />
       </list>
     </option>
   </component>
@@ -532,12 +530,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1468273771111</updated>
-      <workItem from="1468273774266" duration="2317000" />
+      <workItem from="1468273774266" duration="4005000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2317000" />
+    <option name="totallyTimeSpent" value="4005000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -587,28 +585,36 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/pdx/cs410J/pmudgal/Project2.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/pdx/cs410J/pmudgal/Project1.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="302">
-          <caret line="86" column="38" selection-start-line="86" selection-start-column="38" selection-end-line="86" selection-end-column="38" />
+        <state relative-caret-position="323">
+          <caret line="69" column="21" selection-start-line="69" selection-start-column="21" selection-end-line="69" selection-end-column="21" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/edu/pdx/cs410J/pmudgal/TextParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
-          <caret line="58" column="72" selection-start-line="58" selection-start-column="72" selection-end-line="58" selection-end-column="72" />
+        <state relative-caret-position="166">
+          <caret line="50" column="52" selection-start-line="50" selection-start-column="52" selection-end-line="50" selection-end-column="52" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/pdx/cs410J/pmudgal/Project1.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/pdx/cs410J/pmudgal/Project2.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2414">
-          <caret line="150" column="75" selection-start-line="150" selection-start-column="75" selection-end-line="150" selection-end-column="75" />
+        <state relative-caret-position="421">
+          <caret line="64" column="65" selection-start-line="64" selection-start-column="65" selection-end-line="64" selection-end-column="65" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/pdx/cs410J/pmudgal/Constants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
           <folding />
         </state>
       </provider>

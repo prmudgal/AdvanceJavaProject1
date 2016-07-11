@@ -38,36 +38,44 @@ public class Project2 {
 
         try {
             ArrayList<String> arrayList= new ArrayList<String>(Arrays.asList(args));
-            if(arrayList.contains(Constants.TEXTFILE)) {
-                int index=arrayList.indexOf(Constants.TEXTFILE);
-                String filename=arrayList.get(index+1);
-                arrayList.remove(index+1);
-                arrayList.remove(Constants.TEXTFILE);
+            if(!arrayList.contains(Constants.README) ){
+                if (arrayList.contains(Constants.TEXTFILE)) {
+                    int index = arrayList.indexOf(Constants.TEXTFILE);
+                    String filename = arrayList.get(index + 1);
+                    arrayList.remove(index + 1);
+                    arrayList.remove(Constants.TEXTFILE);
 
-                String[] stockArr = new String[arrayList.size()];
-                stockArr = arrayList.toArray(new String[arrayList.size()]);
-                System.out.println(stockArr.length);
-                File file = new File(filename);
-                if(file.createNewFile()) {
-                    appointmentBook = parseAndPrepareTheContentsOfFile(filename, stockArr);
-                    TextDumper textDumper = new TextDumper(filename);
-                    textDumper.dump(appointmentBook);
-                } else{
-                    appointmentBook = parseAndPrepareTheContentsOfFile(filename, stockArr);
-                    TextDumper textDumper = new TextDumper(filename);
-                    textDumper.dump(appointmentBook);
+                    String[] stockArr = new String[arrayList.size()];
+                    stockArr = arrayList.toArray(new String[arrayList.size()]);
+                    System.out.println(stockArr.length);
+                    File file = new File(filename);
+                    if (file.createNewFile()) {
+                        appointmentBook = parseAndPrepareTheContentsOfFile(filename, stockArr);
+                        TextDumper textDumper = new TextDumper(filename);
+                        textDumper.dump(appointmentBook);
+                    } else {
+                        appointmentBook = parseAndPrepareTheContentsOfFile(filename, stockArr);
+                        TextDumper textDumper = new TextDumper(filename);
+                        textDumper.dump(appointmentBook);
+                    }
+                } else {
+                    project1.prepareAppointmentBook(args, appointmentBook);
                 }
             }else{
-                project1.prepareAppointmentBook(args,appointmentBook);
+                System.out.println(Constants.PROJECT2_README_DESC);
             }
         } catch (ParseException e) {
             System.out.println(e.getMessage());
+            System.exit(1);
         } catch (IOException e) {
             System.out.println(e.getMessage());
+            System.exit(1);
         } catch (ParserException e) {
             System.out.println(e.getMessage());
+            System.exit(1);
         } catch (Exception e) {
             System.out.println(e.getMessage());
+            System.exit(1);
         }
     }
 
