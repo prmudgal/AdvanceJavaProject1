@@ -1,5 +1,6 @@
 package edu.pdx.cs410J.pmudgal;
 
+import com.sun.xml.internal.ws.util.StringUtils;
 import edu.pdx.cs410J.AbstractAppointmentBook;
 import edu.pdx.cs410J.AppointmentBookParser;
 import edu.pdx.cs410J.ParserException;
@@ -34,7 +35,7 @@ public class TextParser implements AppointmentBookParser {
 
     /**
      * This method is reading the contents of file and checking
-     * if evryting in file is well formatted. And add the content
+     * if everything in file is well formatted. And add the content
      * of the file to appointmentBook.
      * @return AbstractAppointmentBook
      * @throws ParserException : Exception if issues in parsing
@@ -48,9 +49,8 @@ public class TextParser implements AppointmentBookParser {
             for(String line : Files.readAllLines(Paths.get(filename))){
                 System.out.println(" inside for : " + line);
                 StringTokenizer stringTokenizer = new StringTokenizer(line, ",");
-                System.out.println("ccc " + stringTokenizer.countTokens());
-                if(line!=null && !line.isEmpty() && stringTokenizer.countTokens() ==4) {
-
+                if(line!=null && !line.isEmpty() && countDelimiters(line) ==3) {
+                    System.out.println("Inside if");
                     Appointment appointment = new Appointment();
                     while (stringTokenizer.hasMoreTokens()) {
                         appointment.setOwner(Project1.checkNull(stringTokenizer.nextToken(),"owner name"));
@@ -62,10 +62,12 @@ public class TextParser implements AppointmentBookParser {
                     }
                 } else{
                     throw new IOException("The file seems to be empty/malformed.");
+
                 }
             }
         }  catch (ParseException|IOException e) {
             System.out.println(e.getMessage());
+            System.exit(1);
         } finally {
             try {
                 br.close();
@@ -75,5 +77,20 @@ public class TextParser implements AppointmentBookParser {
         }
         System.out.println(appointmentBook.getAppointments().size() + " Size");
         return appointmentBook;
+    }
+
+    /**
+     * This method counts the number of deimiters which is comma.
+     * @param line : line from file
+     * @return counter: number of comma
+     */
+    private int countDelimiters(String line){
+        int counter = 0;
+        for (Character c: line.toCharArray()) {
+            if (c.equals(',')) {
+                counter++;
+            }
+        }
+        return counter;
     }
 }

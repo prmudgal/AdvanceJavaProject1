@@ -2,42 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="27e61776-0506-445a-86c7-67434bea1afe" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/edu/pdx/cs410J/pmudgal/TextParser.class" afterPath="$PROJECT_DIR$/target/classes/edu/pdx/cs410J/pmudgal/TextParser.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/edu/pdx/cs410J/pmudgal/Project1.java" afterPath="$PROJECT_DIR$/src/main/java/edu/pdx/cs410J/pmudgal/Project1.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/edu/pdx/cs410J/pmudgal/Project2.java" afterPath="$PROJECT_DIR$/src/main/java/edu/pdx/cs410J/pmudgal/Project2.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/edu/pdx/cs410J/pmudgal/TextDumper.java" afterPath="$PROJECT_DIR$/src/main/java/edu/pdx/cs410J/pmudgal/TextDumper.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/edu/pdx/cs410J/pmudgal/TextParser.java" afterPath="$PROJECT_DIR$/src/main/java/edu/pdx/cs410J/pmudgal/TextParser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/javadoc-bundle-options/javadoc-options-javadoc-resources.xml" afterPath="$PROJECT_DIR$/target/javadoc-bundle-options/javadoc-options-javadoc-resources.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/javadoc-bundle-options/package-list" afterPath="$PROJECT_DIR$/target/javadoc-bundle-options/package-list" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/site/apidocs/allclasses-frame.html" afterPath="$PROJECT_DIR$/target/site/apidocs/allclasses-frame.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/site/apidocs/allclasses-noframe.html" afterPath="$PROJECT_DIR$/target/site/apidocs/allclasses-noframe.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/site/apidocs/constant-values.html" afterPath="$PROJECT_DIR$/target/site/apidocs/constant-values.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/site/apidocs/deprecated-list.html" afterPath="$PROJECT_DIR$/target/site/apidocs/deprecated-list.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/site/apidocs/edu/pdx/cs410J/pmudgal/Appointment.html" afterPath="$PROJECT_DIR$/target/site/apidocs/edu/pdx/cs410J/pmudgal/Appointment.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/site/apidocs/edu/pdx/cs410J/pmudgal/AppointmentBook.html" afterPath="$PROJECT_DIR$/target/site/apidocs/edu/pdx/cs410J/pmudgal/AppointmentBook.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/site/apidocs/edu/pdx/cs410J/pmudgal/Constants.html" afterPath="$PROJECT_DIR$/target/site/apidocs/edu/pdx/cs410J/pmudgal/Constants.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/site/apidocs/edu/pdx/cs410J/pmudgal/DateValidator.html" afterPath="$PROJECT_DIR$/target/site/apidocs/edu/pdx/cs410J/pmudgal/DateValidator.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/site/apidocs/edu/pdx/cs410J/pmudgal/Project1.html" afterPath="$PROJECT_DIR$/target/site/apidocs/edu/pdx/cs410J/pmudgal/Project1.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/site/apidocs/edu/pdx/cs410J/pmudgal/Project2.html" afterPath="$PROJECT_DIR$/target/site/apidocs/edu/pdx/cs410J/pmudgal/Project2.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/site/apidocs/edu/pdx/cs410J/pmudgal/TextDumper.html" afterPath="$PROJECT_DIR$/target/site/apidocs/edu/pdx/cs410J/pmudgal/TextDumper.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/site/apidocs/edu/pdx/cs410J/pmudgal/TextParser.html" afterPath="$PROJECT_DIR$/target/site/apidocs/edu/pdx/cs410J/pmudgal/TextParser.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/site/apidocs/edu/pdx/cs410J/pmudgal/class-use/Appointment.html" afterPath="$PROJECT_DIR$/target/site/apidocs/edu/pdx/cs410J/pmudgal/class-use/Appointment.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/site/apidocs/edu/pdx/cs410J/pmudgal/class-use/AppointmentBook.html" afterPath="$PROJECT_DIR$/target/site/apidocs/edu/pdx/cs410J/pmudgal/class-use/AppointmentBook.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/site/apidocs/edu/pdx/cs410J/pmudgal/class-use/Constants.html" afterPath="$PROJECT_DIR$/target/site/apidocs/edu/pdx/cs410J/pmudgal/class-use/Constants.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/site/apidocs/edu/pdx/cs410J/pmudgal/class-use/DateValidator.html" afterPath="$PROJECT_DIR$/target/site/apidocs/edu/pdx/cs410J/pmudgal/class-use/DateValidator.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/site/apidocs/edu/pdx/cs410J/pmudgal/class-use/Project1.html" afterPath="$PROJECT_DIR$/target/site/apidocs/edu/pdx/cs410J/pmudgal/class-use/Project1.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/site/apidocs/edu/pdx/cs410J/pmudgal/class-use/Project2.html" afterPath="$PROJECT_DIR$/target/site/apidocs/edu/pdx/cs410J/pmudgal/class-use/Project2.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/site/apidocs/edu/pdx/cs410J/pmudgal/class-use/TextDumper.html" afterPath="$PROJECT_DIR$/target/site/apidocs/edu/pdx/cs410J/pmudgal/class-use/TextDumper.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/site/apidocs/edu/pdx/cs410J/pmudgal/class-use/TextParser.html" afterPath="$PROJECT_DIR$/target/site/apidocs/edu/pdx/cs410J/pmudgal/class-use/TextParser.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/site/apidocs/edu/pdx/cs410J/pmudgal/package-frame.html" afterPath="$PROJECT_DIR$/target/site/apidocs/edu/pdx/cs410J/pmudgal/package-frame.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/site/apidocs/edu/pdx/cs410J/pmudgal/package-summary.html" afterPath="$PROJECT_DIR$/target/site/apidocs/edu/pdx/cs410J/pmudgal/package-summary.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/site/apidocs/edu/pdx/cs410J/pmudgal/package-tree.html" afterPath="$PROJECT_DIR$/target/site/apidocs/edu/pdx/cs410J/pmudgal/package-tree.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/site/apidocs/edu/pdx/cs410J/pmudgal/package-use.html" afterPath="$PROJECT_DIR$/target/site/apidocs/edu/pdx/cs410J/pmudgal/package-use.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/site/apidocs/help-doc.html" afterPath="$PROJECT_DIR$/target/site/apidocs/help-doc.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/site/apidocs/index-all.html" afterPath="$PROJECT_DIR$/target/site/apidocs/index-all.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/site/apidocs/index.html" afterPath="$PROJECT_DIR$/target/site/apidocs/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/site/apidocs/overview-tree.html" afterPath="$PROJECT_DIR$/target/site/apidocs/overview-tree.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/site/apidocs/serialized-form.html" afterPath="$PROJECT_DIR$/target/site/apidocs/serialized-form.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test1234.txt" afterPath="$PROJECT_DIR$/test1234.txt" />
     </list>
     <ignored path="apptbook.iws" />
@@ -72,9 +39,11 @@
       <file leaf-file-name="Project1.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/edu/pdx/cs410J/pmudgal/Project1.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="212">
+            <state relative-caret-position="0">
               <caret line="125" column="48" selection-start-line="125" selection-start-column="48" selection-end-line="125" selection-end-column="48" />
-              <folding />
+              <folding>
+                <element signature="imports" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -82,11 +51,10 @@
       <file leaf-file-name="TextDumper.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/edu/pdx/cs410J/pmudgal/TextDumper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-335">
+            <state relative-caret-position="476">
               <caret line="34" column="17" selection-start-line="34" selection-start-column="17" selection-end-line="34" selection-end-column="17" />
               <folding>
-                <element signature="e#459#460#0" expanded="true" />
-                <element signature="e#497#498#0" expanded="true" />
+                <element signature="imports" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -95,19 +63,22 @@
       <file leaf-file-name="TextParser.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/edu/pdx/cs410J/pmudgal/TextParser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
-              <caret line="55" column="62" selection-start-line="55" selection-start-column="62" selection-end-line="55" selection-end-column="62" />
+            <state relative-caret-position="-765">
+              <caret line="35" column="7" selection-start-line="35" selection-start-column="7" selection-end-line="35" selection-end-column="7" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ParseException.java" pinned="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk1.8.0_77/src.zip!/java/text/ParseException.java">
+      <file leaf-file-name="IOException.java" pinned="false" current-in-tab="false">
+        <entry file="jar://C:/Program Files/Java/jdk1.8.0_77/src.zip!/java/io/IOException.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-68">
-              <caret line="61" column="11" selection-start-line="61" selection-start-column="11" selection-end-line="61" selection-end-column="11" />
-              <folding />
+            <state relative-caret-position="527">
+              <caret line="56" column="11" selection-start-line="56" selection-start-column="11" selection-end-line="56" selection-end-column="11" />
+              <folding>
+                <element signature="e#1066#1067#0" expanded="true" />
+                <element signature="e#1096#1097#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -115,7 +86,7 @@
       <file leaf-file-name="Project2.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/edu/pdx/cs410J/pmudgal/Project2.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
+            <state relative-caret-position="238">
               <caret line="86" column="38" selection-start-line="86" selection-start-column="38" selection-end-line="86" selection-end-column="38" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -209,10 +180,6 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
-      <pane id="Scope" />
-      <pane id="Scratches">
-        <subPane />
-      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -291,12 +258,16 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches">
+        <subPane />
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="aspect.path.notification.shown" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../student/pom.xml" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/pom.xml" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -825,6 +796,7 @@
       <workItem from="1467675943292" duration="1821000" />
       <workItem from="1467841336760" duration="15992000" />
       <workItem from="1468133857536" duration="8155000" />
+      <workItem from="1468209601451" duration="2103000" />
     </task>
     <servers />
   </component>
@@ -837,7 +809,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="86396000" />
+    <option name="totallyTimeSpent" value="88499000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -848,14 +820,15 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32820514" sideWeight="0.48789713" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31282052" sideWeight="0.40620273" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31282052" sideWeight="0.413767" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31282052" sideWeight="0.59379727" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31282052" sideWeight="0.58623296" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25718608" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962178" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -865,7 +838,6 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329653" sideWeight="0.49707174" order="1" side_tool="false" content_ui="tabs" />
     </layout>
@@ -892,8 +864,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/pdx/cs410J/pmudgal/Project1Exception.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/pdx/cs410J/pmudgal/Project1_bck.java" />
     <entry file="file://$PROJECT_DIR$/src/test/java/edu/pdx/cs410J/pmudgal/AppointmentTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -943,7 +913,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -998,7 +970,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1428">
           <caret line="88" column="6" selection-start-line="88" selection-start-column="6" selection-end-line="88" selection-end-column="6" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1091,7 +1065,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="140">
           <caret line="360" column="16" selection-start-line="360" selection-start-column="16" selection-end-line="360" selection-end-column="16" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1107,9 +1080,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
           <caret line="23" column="26" selection-start-line="23" selection-start-column="26" selection-end-line="23" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1215,11 +1185,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/edu/pdx/cs410J/pmudgal/TextDumper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-335">
+        <state relative-caret-position="476">
           <caret line="34" column="17" selection-start-line="34" selection-start-column="17" selection-end-line="34" selection-end-column="17" />
           <folding>
-            <element signature="e#459#460#0" expanded="true" />
-            <element signature="e#497#498#0" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1228,10 +1197,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-17">
           <caret line="49" column="11" selection-start-line="49" selection-start-column="11" selection-end-line="49" selection-end-column="11" />
-          <folding>
-            <element signature="e#822#823#0" expanded="false" />
-            <element signature="e#868#869#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1239,7 +1204,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="226">
           <caret line="52" column="11" selection-start-line="52" selection-start-column="11" selection-end-line="52" selection-end-column="11" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1263,21 +1227,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="11" column="5" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="74" column="56" selection-start-line="74" selection-start-column="56" selection-end-line="74" selection-end-column="56" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_77/src.zip!/java/text/ParseException.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-68">
+        <state relative-caret-position="425">
           <caret line="61" column="11" selection-start-line="61" selection-start-column="11" selection-end-line="61" selection-end-column="11" />
           <folding />
         </state>
@@ -1285,15 +1240,44 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/edu/pdx/cs410J/pmudgal/Project1.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
+        <state relative-caret-position="0">
           <caret line="125" column="48" selection-start-line="125" selection-start-column="48" selection-end-line="125" selection-end-column="48" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_77/src.zip!/java/io/IOException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="56" column="11" selection-start-line="56" selection-start-column="11" selection-end-line="56" selection-end-column="11" />
+          <folding>
+            <element signature="e#1066#1067#0" expanded="true" />
+            <element signature="e#1096#1097#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_77/jre/lib/rt.jar!/com/sun/xml/internal/ws/util/StringUtils.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="237">
+          <caret line="61" column="41" selection-start-line="61" selection-start-column="41" selection-end-line="61" selection-end-column="41" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/edu/pdx/cs410J/pmudgal/Project2.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
+        <state relative-caret-position="238">
           <caret line="86" column="38" selection-start-line="86" selection-start-column="38" selection-end-line="86" selection-end-column="38" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1304,8 +1288,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/edu/pdx/cs410J/pmudgal/TextParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="55" column="62" selection-start-line="55" selection-start-column="62" selection-end-line="55" selection-end-column="62" />
+        <state relative-caret-position="-765">
+          <caret line="35" column="7" selection-start-line="35" selection-start-column="7" selection-end-line="35" selection-end-column="7" />
           <folding />
         </state>
       </provider>
