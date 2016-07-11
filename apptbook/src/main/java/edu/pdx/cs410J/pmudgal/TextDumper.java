@@ -32,7 +32,6 @@ public class TextDumper implements AppointmentBookDumper {
         try {
             //Whatever the file path is.
             File file = new File(filename);
-//            if(file.createNewFile()) {
                 System.out.println("Created new file");
                 FileOutputStream is = new FileOutputStream(file);
                 OutputStreamWriter osw = new OutputStreamWriter(is);
@@ -41,16 +40,6 @@ public class TextDumper implements AppointmentBookDumper {
                     writeToFile(w, appointment);
                 }
                 w.close();
-//            }else{
-              /*  System.out.println("File already exists");
-                FileOutputStream is = new FileOutputStream(file);
-                OutputStreamWriter osw = new OutputStreamWriter(is);
-                BufferedWriter w = new BufferedWriter(osw);
-                for(Appointment appointment:(new ArrayList<Appointment>(abstractAppointmentBook.getAppointments()))){
-                    writeToFile(w, appointment);
-                }
-                w.close();*/
-//            }
         } catch (IOException e) {
             e.getMessage();
             System.err.println("Problem writing to the file :" + filename);

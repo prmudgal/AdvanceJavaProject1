@@ -71,50 +71,6 @@ public class Project2 {
         }
     }
 
-    /*public static void writeToFile(String filename, AppointmentBook appointmentBook) {
-        try {
-            //Whatever the file path is.
-            File file = new File(filename);
-            if(file.createNewFile()) {
-                System.out.println("Created new file");
-                FileOutputStream is = new FileOutputStream(file);
-                OutputStreamWriter osw = new OutputStreamWriter(is);
-                BufferedWriter w = new BufferedWriter(osw);
-                for(Appointment appointment:appointmentBook.getAppointments()){
-                    writeToFile(w, appointment);
-                }
-                w.close();
-            }else{
-                System.out.println("File already exists");
-                FileOutputStream is = new FileOutputStream(file);
-                OutputStreamWriter osw = new OutputStreamWriter(is);
-                BufferedWriter w = new BufferedWriter(osw);
-                for(Appointment appointment:appointmentBook.getAppointments()){
-                    writeToFile(w, appointment);
-                }
-                w.close();
-
-            }
-        } catch (IOException e) {
-            e.getMessage();
-            System.err.println("Problem writing to the file :" + filename);
-            e.printStackTrace();
-        }
-    }*/
-
-   /* private static void writeToFile(BufferedWriter w, Appointment appointment) throws IOException {
-        w.write(appointment.getOwner());
-        w.write(",");
-        w.write(appointment.getDescription());
-        w.write(",");
-        w.write(appointment.getBeginTimeString());
-        w.write(",");
-        w.write(appointment.getEndTimeString());
-        w.newLine();
-
-    }
-*/
-
     /**
      * This method calls the parse() method of TextParser by passing
      * filename and command line args. After parsing, it also calls
@@ -133,32 +89,7 @@ public class Project2 {
         return (AppointmentBook) appointmentBook;
     }
 
-    /*public static AppointmentBook readFromFile(String filename, AppointmentBook appointmentBook) throws IOException {
-        BufferedReader br = new BufferedReader(new FileReader(filename));
 
-        try {
-            for(String line : Files.readAllLines(Paths.get(filename))){
-                if(line!=null && !line.isEmpty())
-                System.out.println(" inside for : "+ line);
-                StringTokenizer stringTokenizer = new StringTokenizer(line,",");
-                Appointment appointment =new Appointment();
-                while(stringTokenizer.hasMoreTokens()){
-                    appointment.setOwner(stringTokenizer.nextToken());
-                    appointment.setDescription(stringTokenizer.nextToken());
-                    appointment.setBeginTimeString(stringTokenizer.nextToken());
-                    appointment.setEndTimeString(stringTokenizer.nextToken());
-                    appointmentBook.addAppointment(appointment);
-                }
-            }
-        } catch(Exception e){
-            e.getMessage();
-        }
-        finally {
-            br.close();
-        }
-        System.out.println(appointmentBook.getAppointments().size() + " Size");
-        return appointmentBook;
-    }*/
 
 }
 
