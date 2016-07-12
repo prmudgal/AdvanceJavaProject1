@@ -11,7 +11,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.text.ParseException;
-import java.util.StringTokenizer;
 
 /**
  * Created by Priyanka on 7/6/2016.
@@ -46,22 +45,19 @@ public class TextParser implements AppointmentBookParser {
             br=new BufferedReader(new FileReader(file));
             for(String line : Files.readAllLines(Paths.get(filename))){
                 System.out.println(" inside for : " + line);
-                StringTokenizer stringTokenizer = new StringTokenizer(line, ",");
-                if(line!=null && !line.isEmpty() && countDelimiters(line) ==3) {
-                    Appointment appointment = new Appointment();
-                    while (stringTokenizer.hasMoreTokens()) {
-                        appointment.setOwner(Project1.checkNull(stringTokenizer.nextToken(),"owner name"));
-                        appointment.setDescription(Project1.checkNull(stringTokenizer.nextToken(),"description"));
-                        appointment.setBeginTimeString(Project1.checkDateTimeFormat(stringTokenizer.nextToken()));
-                        appointment.setEndTimeString(Project1.checkDateTimeFormat(stringTokenizer.nextToken()));
+                Appointment appointment = new Appointment();
+                String[] lineFromFile = line.split(",");
+                if(line!=null && !line.isEmpty() && countDelimiters(line) ==3 && lineFromFile.length == 4) {
+                        appointment.setOwner(checkNullInsideFile(lineFromFile[0],"owner name"));
+                        appointment.setDescription(checkNullInsideFile(lineFromFile[1],"description"));
+                        appointment.setBeginTimeString(Project1.checkDateTimeFormat(checkNullInsideFile(lineFromFile[2], "beginTime")));
+                        appointment.setEndTimeString(Project1.checkDateTimeFormat(checkNullInsideFile(lineFromFile[3],"endTime")));
                         appointmentBook.setOwnerName(appointment.getOwner());
                         appointmentBook.addAppointment(appointment);
-                    }
                 } else{
                     throw new IOException("The file seems to be malformed." +
-                            " The file either has more commas or values in it." +
+                            " The file either has less/more commas or values in it." +
                             " Please correct it and try again.");
-
                 }
             }
         }  catch (ParseException|IOException e) {
@@ -92,5 +88,23 @@ public class TextParser implements AppointmentBookParser {
             }
         }
         return counter;
+    }
+
+    /**
+     * This method checks if the passed string is not null
+     * and not empty and also make sure that it contains data.
+     * @param string : String to be checked as null
+     * @param fieldName : The fieldname from appointment
+     * @return the correct value or the error message
+     */
+    public static String checkNullInsideFile(String string, String fieldName){
+        if(string!=null && !string.trim().isEmpty() && !string.trim().equals("")){
+            return string;
+        }else {
+            System.out.println( fieldName + " is empty inside the file. Please correct the file and try again.");
+            System.exit(1);
+            return fieldName + " is empty inside the file. Please correct the file and try again.";
+
+        }
     }
 }
