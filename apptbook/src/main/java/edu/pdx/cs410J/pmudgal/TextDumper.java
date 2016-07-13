@@ -32,7 +32,6 @@ public class TextDumper implements AppointmentBookDumper {
         try {
             //Whatever the file path is.
             File file = new File(filename);
-                System.out.println("Created new file");
                 FileOutputStream is = new FileOutputStream(file);
                 OutputStreamWriter osw = new OutputStreamWriter(is);
                 BufferedWriter w = new BufferedWriter(osw);
@@ -41,9 +40,8 @@ public class TextDumper implements AppointmentBookDumper {
                 }
                 w.close();
         } catch (IOException e) {
-            e.getMessage();
+            System.out.println(e.getMessage());
             System.err.println("Problem writing to the file :" + filename);
-            e.printStackTrace();
         }
     }
 

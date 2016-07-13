@@ -5,7 +5,7 @@ package edu.pdx.cs410J.pmudgal;
  */
 public class Constants {
     public static final String PRINT="-print";
-    public static final String TEXTFILE="-textfile";
+    public static final String TEXTFILE="-textFile";
     public static final String README="-README";
     public static final String PROVIDE_ARG="Please provide the arguments in order: owner description beginDateTime endDateTime";
 
@@ -20,7 +20,7 @@ public class Constants {
             "This projects also creates a text file with all/single appointments of the owner.\n"+
             "It also makes sure that a appointmentbook belongs to a single owner only.\n ";
 
-    public static final String usage=" java edu.pdx.cs410J.pmudgal.Project1 [options] <args>\n" +
+    public static final String usage=" java edu.pdx.cs410J.pmudgal.Project2 [options] <args>\n" +
             "args are (in this order):\n" +
             "owner: The person whose owns the appt book\n" +
             "description: A description of the appointment\n" +

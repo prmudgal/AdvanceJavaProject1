@@ -47,16 +47,17 @@ public class Project2 {
 
                     String[] stockArr = new String[arrayList.size()];
                     stockArr = arrayList.toArray(new String[arrayList.size()]);
-                    System.out.println(stockArr.length);
                     File file = new File(filename);
                     if (file.createNewFile()) {
                         appointmentBook = parseAndPrepareTheContentsOfFile(filename, stockArr);
                         TextDumper textDumper = new TextDumper(filename);
                         textDumper.dump(appointmentBook);
+                        System.out.println("Created new file : "+ filename);
                     } else {
                         appointmentBook = parseAndPrepareTheContentsOfFile(filename, stockArr);
                         TextDumper textDumper = new TextDumper(filename);
                         textDumper.dump(appointmentBook);
+                        System.out.println("Written appointment to file : "+ filename);
                     }
                 } else {
                     project1.prepareAppointmentBook(args, appointmentBook);
