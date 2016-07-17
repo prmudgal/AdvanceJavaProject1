@@ -12,6 +12,9 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * Created by Priyanka on 7/6/2016.
@@ -19,15 +22,16 @@ import java.text.SimpleDateFormat;
 public class TextParser implements AppointmentBookParser {
     String filename;
     AppointmentBook appointmentBook;
-
+String project;
     /**
      * Parameterized Constructor
      * @param filename : File containing appointments
      * @param appointmentBook : ApointmentBook having appointments
      */
-    public TextParser(String filename, AppointmentBook appointmentBook){
+    public TextParser(String filename, AppointmentBook appointmentBook, String project){
         this.filename=filename;
         this.appointmentBook=appointmentBook;
+        this.project=project;
     }
 
     /**
@@ -50,15 +54,17 @@ public class TextParser implements AppointmentBookParser {
                 if(line!=null && !line.isEmpty() && countDelimiters(line) ==3 && lineFromFile.length == 4) {
                         appointment.setOwner(checkNullInsideFile(lineFromFile[0],"owner name"));
                         appointment.setDescription(checkNullInsideFile(lineFromFile[1],"description"));
-                        appointment.setBeginTimeString(checkDateTimeFormatInFile(checkNullInsideFile(lineFromFile[2], "beginTime"),"beginTime"));
-                        appointment.setEndTimeString(checkDateTimeFormatInFile(checkNullInsideFile(lineFromFile[3],"endTime"), "endTime"));
+                        appointment.setBeginTimeString(checkDateTimeFormatWithAmPmInFile(checkNullInsideFile(lineFromFile[2], "beginTime"),"beginTime"));
+                        appointment.setEndTimeString(checkDateTimeFormatWithAmPmInFile(checkNullInsideFile(lineFromFile[3],"endTime"), "endTime"));
                         appointmentBook.setOwnerName(appointment.getOwner());
                         appointmentBook.addAppointment(appointment);
+
                 } else{
                     throw new IOException("The file seems to be malformed." +
                             " The file either has less/more commas or values in it." +
                             " Please correct it and try again.");
                 }
+
             }
         }  catch (ParseException|IOException e) {
             System.out.println(e.getMessage());
@@ -130,4 +136,33 @@ public class TextParser implements AppointmentBookParser {
         }
         return value;
     }
+
+
+    /**
+     * *This method checks for the correct format of date and time in the file.
+     *The date and time should be in format "mm/dd/yyyy hh:mm am/pm' or "m/d/yyyy hh:mm am/pm".
+     * This method also check for invalid dates e.g. 13/01/2015 or 12/40/2015.
+     * Also enforces the year has to pass with 4 digits.
+     * @param value : the date and time
+     * @return : the correctly formatted date and time
+     * @throws ParseException : Exception while parsing the date and time
+     */
+    public static String checkDateTimeFormatWithAmPmInFile(String value, String fieldName) throws ParseException {
+        if (value == null || !value.matches("^\\d{1,2}/\\d{1,2}/\\d{4} \\d{1,2}:\\d{2} [aApP][mM]$")) {
+            System.out.println("The date and time for "+ fieldName+" in file is not in format mm/dd/yyyy hh:mm am/pm. Please correct it and try again");
+            System.exit(1);
+        }else{
+            SimpleDateFormat df = new SimpleDateFormat("MM/dd/yyyy hh:mm a");
+            df.setLenient(false);
+            df.parse(value);
+        }
+        return value;
+    }
+
+   /* public AppointmentBook sortAppointmentBook(AppointmentBook appointmentBook){
+        AppointmentBook sortedBook = new AppointmentBook();
+        for(Appointment appointment:appointmentBook.getAppointments()){
+            appointment.compareTo()
+        }
+    }*/
 }

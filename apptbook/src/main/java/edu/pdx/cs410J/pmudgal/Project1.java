@@ -26,7 +26,8 @@ public class Project1 {
         try {
                 prepareAppointmentBook(args,appointmentBook);
         } catch (ParseException e) {
-            System.out.println("Please provide the date and time in format mm/dd/yyyy hh:mm");
+            System.out.println("Please provide the date and time in format mm/dd/yyyy hh:mm am/pm");
+            e.printStackTrace();
             System.exit(1);
         } catch (Exception e){
             e.getMessage();
@@ -48,9 +49,7 @@ public class Project1 {
     public static AppointmentBook prepareAppointmentBook(String[] args, AppointmentBook appointmentBook) throws Exception {
         Appointment appointment = new Appointment();
 
-        if(args.length==0){
-            System.out.println("You did not provide any arguments. Please provide the missing arguments in format: "+Constants.usage);
-        }else if(Arrays.asList(args).contains("-README")){
+         if(Arrays.asList(args).contains("-README")){
             displayReadme();
         } else {
             for (int i = 0; i < args.length; i++) {
@@ -63,11 +62,11 @@ public class Project1 {
                         System.exit(1);
                     }
                 }
-                if ( args.length - i == 6) {
+                if ( args.length - i == 8) {
                     appointment.setOwner(validateOwnerName(args[i])); //Checks if the argument starts with "-", it is not considered as owner name
                     appointment.setDescription(checkNull(args[++i], "description")); //
-                    appointment.setBeginTimeString(checkDateTimeFormat(checkNull(args[++i], "beginDateTime").concat(" ").concat(checkNull(args[++i], "beginDateTime"))));
-                    appointment.setEndTimeString(checkDateTimeFormat(checkNull(args[++i], "endDateTime").concat(" ").concat(checkNull(args[++i], "endDateTime"))));
+                    appointment.setBeginTimeString(checkDateTimeFormatWithAmPm(checkNull(args[++i], "beginDateTime").concat(" ").concat(checkNull(args[++i], "beginDateTime")).concat(" ").concat(checkNull(args[++i],"beginDateTime"))));
+                    appointment.setEndTimeString(checkDateTimeFormatWithAmPm(checkNull(args[++i], "endDateTime").concat(" ").concat(checkNull(args[++i], "endDateTime")).concat(" ").concat(checkNull(args[++i],"endDateTime"))));
                     if(appointmentBook.getOwnerName()!=null && !appointmentBook.getOwnerName().isEmpty() &&
                             !appointmentBook.getOwnerName().equals(appointment.getOwner())){
                         throw new Exception("Owner name passed in argument "+" '" +appointment.getOwner() + "' "+" is different than the one present in AppointmentBook "+ " '"+appointmentBook.getOwnerName()+"' ");
@@ -158,7 +157,7 @@ public class Project1 {
      * This method is not used currently, however,
      * I have not removed this method as this may be
      * used for future functionality.
-     * @param appointment : appointment is passed to compare eend dates and begin dat
+     * @param appointment : appointment is passed to compare end dates and begin dat
      * @return true if the enddatetime > begindateTime
      */
     private static boolean compareEndDateBeginDate(Appointment appointment){
@@ -167,6 +166,27 @@ public class Project1 {
             System.exit(1);
         }
         return  true;
+    }
+
+    /**
+     * *This method checks for the correct format of date and time.
+     *The date and time should be in format "mm/dd/yyyy hh:mm am/pm' or "m/d/yyyy hh:mm am/pm".
+     * This method also check for invalid dates e.g. 13/01/2015 or 12/40/2015.
+     * Also enforces the year has to pass with 4 digits.
+     * @param value : the date and time
+     * @return : the correctly formatted date and time
+     * @throws ParseException : Exception while parsing the date and time
+     */
+    public static String checkDateTimeFormatWithAmPm(String value) throws ParseException {
+        if (value == null || !value.matches("^\\d{1,2}/\\d{1,2}/\\d{4} \\d{1,2}:\\d{2} [aApP][mM]$")) {
+            System.out.println("Please provide the date and time in format mm/dd/yyyy hh:mm");
+            System.exit(1);
+        }else{
+            SimpleDateFormat df = new SimpleDateFormat("MM/dd/yyyy hh:mm a");
+            df.setLenient(false);
+            df.parse(value);
+        }
+        return value;
     }
 
 

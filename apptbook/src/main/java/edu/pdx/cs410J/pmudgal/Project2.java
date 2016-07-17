@@ -32,52 +32,57 @@ public class Project2 {
      * the project processes same as Project 1.
      * @param args : Command line arguments passed.
      */
-    private static void parseCommandLineArgs(String[] args) {
+    public static AppointmentBook parseCommandLineArgs(String[] args) {
         Project1 project1=new Project1();
         AppointmentBook appointmentBook = new AppointmentBook();
 
         try {
-            ArrayList<String> arrayList= new ArrayList<String>(Arrays.asList(args));
-            if(!arrayList.contains(Constants.README) ){
-                if (arrayList.contains(Constants.TEXTFILE)) {
-                    int index = arrayList.indexOf(Constants.TEXTFILE);
-                    String filename = arrayList.get(index + 1);
-                    arrayList.remove(index + 1);
-                    arrayList.remove(Constants.TEXTFILE);
+            if(args.length==0){
+                System.out.println("You did not provide any arguments. Please provide the missing arguments in format: "+Constants.usage);
+            }else {
+                ArrayList<String> arrayList = new ArrayList<String>(Arrays.asList(args));
+                if (!arrayList.contains(Constants.README)) {
+                    if (arrayList.contains(Constants.TEXTFILE)) {
+                        int index = arrayList.indexOf(Constants.TEXTFILE);
+                        String filename = arrayList.get(index + 1);
+                        arrayList.remove(index + 1);
+                        arrayList.remove(Constants.TEXTFILE);
 
-                    String[] stockArr = new String[arrayList.size()];
-                    stockArr = arrayList.toArray(new String[arrayList.size()]);
-                    File file = new File(filename);
-                    if (file.createNewFile()) {
-                        appointmentBook = parseAndPrepareTheContentsOfFile(filename, stockArr);
-                        TextDumper textDumper = new TextDumper(filename);
-                        textDumper.dump(appointmentBook);
-                        System.out.println("Created new file : "+ filename);
+                        String[] stockArr = new String[arrayList.size()];
+                        stockArr = arrayList.toArray(new String[arrayList.size()]);
+                        File file = new File(filename);
+                        if (file.createNewFile()) {
+                            appointmentBook = parseAndPrepareTheContentsOfFile(filename, stockArr);
+                            TextDumper textDumper = new TextDumper(filename);
+                            textDumper.dump(appointmentBook);
+                            System.out.println("Created new file : " + filename);
+                        } else {
+                            appointmentBook = parseAndPrepareTheContentsOfFile(filename, stockArr);
+                            TextDumper textDumper = new TextDumper(filename);
+                            textDumper.dump(appointmentBook);
+                            System.out.println("Written appointment to file : " + filename);
+                        }
                     } else {
-                        appointmentBook = parseAndPrepareTheContentsOfFile(filename, stockArr);
-                        TextDumper textDumper = new TextDumper(filename);
-                        textDumper.dump(appointmentBook);
-                        System.out.println("Written appointment to file : "+ filename);
+                        project1.prepareAppointmentBook(args, appointmentBook);
                     }
                 } else {
-                    project1.prepareAppointmentBook(args, appointmentBook);
+                    System.out.println(Constants.PROJECT2_README_DESC);
                 }
-            }else{
-                System.out.println(Constants.PROJECT2_README_DESC);
             }
         } catch (ParseException e) {
             System.out.println(e.getMessage());
+            e.printStackTrace();
             System.exit(1);
         } catch (IOException e) {
             System.out.println(e.getMessage());
+            e.printStackTrace();
             System.exit(1);
-        } catch (ParserException e) {
+        }  catch (Exception e) {
             System.out.println(e.getMessage());
-            System.exit(1);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
+            e.printStackTrace();
             System.exit(1);
         }
+        return appointmentBook;
     }
 
     /**
@@ -92,7 +97,7 @@ public class Project2 {
     public static AppointmentBook parseAndPrepareTheContentsOfFile(String filename, String[] args) throws Exception {
         Project1 project1 =new Project1();
         AbstractAppointmentBook appointmentBook = new AppointmentBook();
-        TextParser textParser = new TextParser(filename, (AppointmentBook) appointmentBook);
+        TextParser textParser = new TextParser(filename, (AppointmentBook) appointmentBook, "Project2");
         appointmentBook = textParser.parse();
         appointmentBook = project1.prepareAppointmentBook(args, (AppointmentBook) appointmentBook);
         return (AppointmentBook) appointmentBook;

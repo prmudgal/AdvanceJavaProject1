@@ -4,6 +4,7 @@ import edu.pdx.cs410J.AbstractAppointmentBook;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Comparator;
 
 /**
  * Created by Priyanka on 6/27/2016.
@@ -52,4 +53,6 @@ public class AppointmentBook extends AbstractAppointmentBook<Appointment> {
     public void setOwnerName(String ownerName) {
     this.ownerName = ownerName;
 }
+
+
 }
