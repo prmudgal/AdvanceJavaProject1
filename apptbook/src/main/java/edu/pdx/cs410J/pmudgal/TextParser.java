@@ -51,18 +51,35 @@ String project;
             for(String line : Files.readAllLines(Paths.get(filename))){
                 Appointment appointment = new Appointment();
                 String[] lineFromFile = line.split(",");
-                if(line!=null && !line.isEmpty() && countDelimiters(line) ==3 && lineFromFile.length == 4) {
-                        appointment.setOwner(checkNullInsideFile(lineFromFile[0],"owner name"));
-                        appointment.setDescription(checkNullInsideFile(lineFromFile[1],"description"));
-                        appointment.setBeginTimeString(checkDateTimeFormatWithAmPmInFile(checkNullInsideFile(lineFromFile[2], "beginTime"),"beginTime"));
-                        appointment.setEndTimeString(checkDateTimeFormatWithAmPmInFile(checkNullInsideFile(lineFromFile[3],"endTime"), "endTime"));
+                if(project.equals("project2")) {
+                    if (line != null && !line.isEmpty() && countDelimiters(line) == 3 && lineFromFile.length == 4) {
+                        appointment.setOwner(checkNullInsideFile(lineFromFile[0], "owner name"));
+                        appointment.setDescription(checkNullInsideFile(lineFromFile[1], "description"));
+                        appointment.setBeginTimeString(checkDateTimeFormatWithAmPmInFile(checkNullInsideFile(lineFromFile[2], "beginTime"), "beginTime"));
+                        appointment.setEndTimeString(checkDateTimeFormatWithAmPmInFile(checkNullInsideFile(lineFromFile[3], "endTime"), "endTime"));
                         appointmentBook.setOwnerName(appointment.getOwner());
                         appointmentBook.addAppointment(appointment);
 
-                } else{
-                    throw new IOException("The file seems to be malformed." +
-                            " The file either has less/more commas or values in it." +
-                            " Please correct it and try again.");
+                    } else {
+                        throw new IOException("The file seems to be malformed." +
+                                " The file either has less/more commas or values in it." +
+                                " Please correct it and try again.");
+                    }
+                }else if(project.equals("Project3")){
+                    if (line != null && !line.isEmpty() && countDelimiters(line) == 4 && lineFromFile.length == 5) {
+                        appointment.setOwner(checkNullInsideFile(lineFromFile[0], "owner name"));
+                        appointment.setDescription(checkNullInsideFile(lineFromFile[1], "description"));
+                        appointment.setBeginTimeString(checkDateTimeFormatWithAmPmInFile(checkNullInsideFile(lineFromFile[2], "beginTime"), "beginTime"));
+                        appointment.setEndTimeString(checkDateTimeFormatWithAmPmInFile(checkNullInsideFile(lineFromFile[3], "endTime"), "endTime"));
+                        appointment.setDuration(checkNullInsideFile(lineFromFile[4]), "duration");
+                        appointmentBook.setOwnerName(appointment.getOwner());
+                        appointmentBook.addAppointment(appointment);
+
+                    } else {
+                        throw new IOException("The file seems to be malformed." +
+                                " The file either has less/more commas or values in it." +
+                                " Please correct it and try again.");
+                    }
                 }
 
             }
@@ -79,6 +96,8 @@ String project;
         }
         return appointmentBook;
     }
+
+
 
     /**
      * This method counts the number of deimiters which is comma.

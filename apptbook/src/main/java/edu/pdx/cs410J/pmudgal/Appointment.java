@@ -23,9 +23,9 @@ public class Appointment extends AbstractAppointment implements Comparable<Appoi
 
   private String endTimeString;
 
+  private int duration;
+
   SimpleDateFormat sdf= new SimpleDateFormat("MM/dd/yyyy hh:mm a");
-
-
 
   /**
    * getter for beginTimeString
@@ -41,6 +41,8 @@ public class Appointment extends AbstractAppointment implements Comparable<Appoi
     }*/
     return beginTimeString;
   }
+
+
 
   /**
    * getter for endTimeString
@@ -66,7 +68,6 @@ public class Appointment extends AbstractAppointment implements Comparable<Appoi
     return description;
   }
 
-
   /**
    * setter for description
    * @param description : Description for appointment
@@ -74,6 +75,7 @@ public class Appointment extends AbstractAppointment implements Comparable<Appoi
   public void setDescription(String description) {
     this.description = description;
   }
+
 
   /**
    * Getter for Owner
@@ -207,5 +209,13 @@ public class Appointment extends AbstractAppointment implements Comparable<Appoi
       return 0;
     }
 
+  }
+
+  public int getDuration() {
+    return duration;
+  }
+
+  public void setDuration(int duration) {
+    this.duration = duration;
   }
 }
