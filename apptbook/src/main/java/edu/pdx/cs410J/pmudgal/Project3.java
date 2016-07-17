@@ -20,31 +20,7 @@ public class Project3 {
 
     public static void main(String[] args){
 
-//        System.out.println(DateFormat.getDateInstance(DateFormat.SHORT).format(new Date()));
         parseCommandLineArgs(args);
-
-//        ArrayList<Appointment> appointments =new ArrayList<Appointment>();
-//        Appointment appointment = new Appointment();
-//        appointment.setBeginTimeString("12/12/2012 3:30 am");
-//        appointment.setEndTimeString("12/13/2012 3:20 am");
-//        appointment.setDescription("AAAA");
-//        appointment.setOwner("Pri");
-//
-//        Appointment appointment2 = new Appointment();
-//        appointment.setBeginTimeString("12/11/2012 3:30 am");
-//        appointment.setEndTimeString("12/12/2012 3:20 am");
-//        appointment.setDescription("AAAA12");
-//        appointment.setOwner("Pri");
-//        System.out.println(appointment.getBeginTimeString());
-//        appointments.add(appointment2);
-//        appointments.add(appointment);
-//        System.out.println(appointment.getBeginTime());
-//        System.out.println(appointments.size());
-//        Collections.sort(appointments);
-//        System.out.println(appointments.size());
-//        for (Appointment app: appointments){
-//            System.out.println(app.getBeginTimeString() + " "+app.getEndTimeString() + " " + app.getDescription());
-//        }
     }
 
     private static void parseCommandLineArgs(String[] args) {
@@ -138,6 +114,7 @@ public class Project3 {
             }else{
                 appointmentBook=project1.prepareAppointmentBook(stockArr,(AppointmentBook )appointmentBook);
             }
+
         }else{
             if(!prettyFilename.equals("-")) {
                 TextParser textParser = new TextParser(prettyFilename, (AppointmentBook) appointmentBook, "Project3");

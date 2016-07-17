@@ -51,7 +51,7 @@ String project;
             for(String line : Files.readAllLines(Paths.get(filename))){
                 Appointment appointment = new Appointment();
                 String[] lineFromFile = line.split(",");
-                if(project.equals("project2")) {
+                if(project.equals("Project2")) {
                     if (line != null && !line.isEmpty() && countDelimiters(line) == 3 && lineFromFile.length == 4) {
                         appointment.setOwner(checkNullInsideFile(lineFromFile[0], "owner name"));
                         appointment.setDescription(checkNullInsideFile(lineFromFile[1], "description"));
@@ -61,7 +61,7 @@ String project;
                         appointmentBook.addAppointment(appointment);
 
                     } else {
-                        throw new IOException("The file seems to be malformed." +
+                        throw new IOException("The file '"+filename+ "' seems to be malformed." +
                                 " The file either has less/more commas or values in it." +
                                 " Please correct it and try again.");
                     }
@@ -71,12 +71,12 @@ String project;
                         appointment.setDescription(checkNullInsideFile(lineFromFile[1], "description"));
                         appointment.setBeginTimeString(checkDateTimeFormatWithAmPmInFile(checkNullInsideFile(lineFromFile[2], "beginTime"), "beginTime"));
                         appointment.setEndTimeString(checkDateTimeFormatWithAmPmInFile(checkNullInsideFile(lineFromFile[3], "endTime"), "endTime"));
-                        appointment.setDuration(checkNullInsideFile(lineFromFile[4]), "duration");
+                        appointment.setDuration(Integer.parseInt(checkNullInsideFile(lineFromFile[4], "duration")));
                         appointmentBook.setOwnerName(appointment.getOwner());
                         appointmentBook.addAppointment(appointment);
 
                     } else {
-                        throw new IOException("The file seems to be malformed." +
+                        throw new IOException("The file '"+filename+ "'seems to be malformed." +
                                 " The file either has less/more commas or values in it." +
                                 " Please correct it and try again.");
                     }

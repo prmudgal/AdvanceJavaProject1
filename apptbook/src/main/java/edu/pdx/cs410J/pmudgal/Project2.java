@@ -71,15 +71,12 @@ public class Project2 {
             }
         } catch (ParseException e) {
             System.out.println(e.getMessage());
-            e.printStackTrace();
             System.exit(1);
         } catch (IOException e) {
             System.out.println(e.getMessage());
-            e.printStackTrace();
             System.exit(1);
         }  catch (Exception e) {
             System.out.println(e.getMessage());
-            e.printStackTrace();
             System.exit(1);
         }
         return appointmentBook;

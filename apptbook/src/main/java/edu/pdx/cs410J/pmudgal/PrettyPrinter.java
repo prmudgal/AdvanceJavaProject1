@@ -65,11 +65,12 @@ public class PrettyPrinter implements AppointmentBookDumper {
         w.write(",");
         w.write(appointment.getEndTimeString());
         w.write(",");
-        w.write((int) getDuration(appointment));
+        w.write(String.valueOf(getDuration(appointment)));
         w.newLine();
     }
 
     public static long getDuration(Appointment appointment){
+        System.out.println(" time : "+ (appointment.getEndTime().getTime() - appointment.getBeginTime().getTime())/(60 * 1000));
        return  (appointment.getEndTime().getTime() - appointment.getBeginTime().getTime())/(60 * 1000);
     }
 }
