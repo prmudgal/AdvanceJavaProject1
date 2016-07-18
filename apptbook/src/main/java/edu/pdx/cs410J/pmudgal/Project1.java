@@ -24,7 +24,7 @@ public class Project1 {
 
         Class c = AbstractAppointmentBook.class;  // Refer to one of Dave's classes so that we can be sure it is on the classpath
         try {
-                prepareAppointmentBook(args,appointmentBook);
+            prepareAppointmentBook(args,appointmentBook);
         } catch (ParseException e) {
             System.out.println("Please provide the date and time in format mm/dd/yyyy hh:mm am/pm");
             e.printStackTrace();
@@ -49,40 +49,39 @@ public class Project1 {
     public static AppointmentBook prepareAppointmentBook(String[] args, AppointmentBook appointmentBook) throws Exception {
         Appointment appointment = new Appointment();
 
-         if(Arrays.asList(args).contains("-README")){
+        if(Arrays.asList(args).contains("-README")){
             displayReadme();
         } else {
             for (int i = 0; i < args.length; i++) {
                 if (args[i].startsWith("-")) {
                     if (args[i].contains(Constants.PRINT)) {
-                        System.out.println("Printing the Appointment : " + (args.length>2?args[2]:"No description provided in command line."));
+                        System.out.println("Printing the Appointment : " + (args.length > 2 ? args[2] : "No description provided in command line."));
                         i++;
                     } else {
-                        System.out.println(args[i]+ ": This is not a correct option. Please provide the correct option.");
+                        System.out.println(args[i] + ": This is not a correct option. Please provide the correct option.");
                         System.exit(1);
                     }
                 }
-                if ( args.length - i == 8) {
+                if (args.length - i == 8) {
                     appointment.setOwner(validateOwnerName(args[i])); //Checks if the argument starts with "-", it is not considered as owner name
                     appointment.setDescription(checkNull(args[++i], "description")); //
-                    appointment.setBeginTimeString(checkDateTimeFormatWithAmPm(checkNull(args[++i], "beginDateTime").concat(" ").concat(checkNull(args[++i], "beginDateTime")).concat(" ").concat(checkNull(args[++i],"beginDateTime"))));
-                    appointment.setEndTimeString(checkDateTimeFormatWithAmPm(checkNull(args[++i], "endDateTime").concat(" ").concat(checkNull(args[++i], "endDateTime")).concat(" ").concat(checkNull(args[++i],"endDateTime"))));
-                    if(appointmentBook.getOwnerName()!=null && !appointmentBook.getOwnerName().isEmpty() &&
-                            !appointmentBook.getOwnerName().equals(appointment.getOwner())){
-                        throw new Exception("Owner name passed in argument "+" '" +appointment.getOwner() + "' "+" is different than the one present in AppointmentBook "+ " '"+appointmentBook.getOwnerName()+"' ");
+                    appointment.setBeginTimeString(checkDateTimeFormatWithAmPm(checkNull(args[++i], "beginDateTime").concat(" ").concat(checkNull(args[++i], "beginDateTime")).concat(" ").concat(checkNull(args[++i], "beginDateTime"))));
+                    appointment.setEndTimeString(checkDateTimeFormatWithAmPm(checkNull(args[++i], "endDateTime").concat(" ").concat(checkNull(args[++i], "endDateTime")).concat(" ").concat(checkNull(args[++i], "endDateTime"))));
+                    if (appointmentBook.getOwnerName() != null && !appointmentBook.getOwnerName().isEmpty() &&
+                            !appointmentBook.getOwnerName().equals(appointment.getOwner())) {
+                        throw new Exception("Owner name passed in argument " + " '" + appointment.getOwner() + "' " + " is different than the one present in AppointmentBook " + " '" + appointmentBook.getOwnerName() + "' ");
                     }
                     appointmentBook.addAppointment(appointment);
                     System.out.println(appointment.toString());
-                } else if( args.length - i < 6){
+                } else if (args.length - i < 6) {
                     System.out.println("Some arguments are missing. Please provide complete arguments : owner description beginDateTime endDateTime");
                     System.exit(1);
-                }else if( args.length - i > 6){
+                } else if (args.length - i > 6) {
                     System.out.println("There are extra arguments provided than required arguments.\n" +
                             Constants.PROVIDE_ARG);
                     System.exit(1);
                 }
             }
-
         }
         return appointmentBook;
     }
@@ -145,7 +144,7 @@ public class Project1 {
         }else{
             SimpleDateFormat df = new SimpleDateFormat("MM/dd/yyyy HH:mm");
             df.setLenient(false);
-           df.parse(value);
+            df.parse(value);
         }
         return value;
     }

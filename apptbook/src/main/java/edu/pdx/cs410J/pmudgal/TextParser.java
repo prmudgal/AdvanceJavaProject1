@@ -22,16 +22,14 @@ import java.util.Collections;
 public class TextParser implements AppointmentBookParser {
     String filename;
     AppointmentBook appointmentBook;
-String project;
     /**
      * Parameterized Constructor
      * @param filename : File containing appointments
      * @param appointmentBook : ApointmentBook having appointments
      */
-    public TextParser(String filename, AppointmentBook appointmentBook, String project){
+    public TextParser(String filename, AppointmentBook appointmentBook){
         this.filename=filename;
         this.appointmentBook=appointmentBook;
-        this.project=project;
     }
 
     /**
@@ -51,7 +49,7 @@ String project;
             for(String line : Files.readAllLines(Paths.get(filename))){
                 Appointment appointment = new Appointment();
                 String[] lineFromFile = line.split(",");
-                if(project.equals("Project2")) {
+//                if(project.equals("Project2")) {
                     if (line != null && !line.isEmpty() && countDelimiters(line) == 3 && lineFromFile.length == 4) {
                         appointment.setOwner(checkNullInsideFile(lineFromFile[0], "owner name"));
                         appointment.setDescription(checkNullInsideFile(lineFromFile[1], "description"));
@@ -65,22 +63,22 @@ String project;
                                 " The file either has less/more commas or values in it." +
                                 " Please correct it and try again.");
                     }
-                }else if(project.equals("Project3")){
-                    if (line != null && !line.isEmpty() && countDelimiters(line) == 4 && lineFromFile.length == 5) {
-                        appointment.setOwner(checkNullInsideFile(lineFromFile[0], "owner name"));
-                        appointment.setDescription(checkNullInsideFile(lineFromFile[1], "description"));
-                        appointment.setBeginTimeString(checkDateTimeFormatWithAmPmInFile(checkNullInsideFile(lineFromFile[2], "beginTime"), "beginTime"));
-                        appointment.setEndTimeString(checkDateTimeFormatWithAmPmInFile(checkNullInsideFile(lineFromFile[3], "endTime"), "endTime"));
-                        appointment.setDuration(Integer.parseInt(checkNullInsideFile(lineFromFile[4], "duration")));
-                        appointmentBook.setOwnerName(appointment.getOwner());
-                        appointmentBook.addAppointment(appointment);
-
-                    } else {
-                        throw new IOException("The file '"+filename+ "'seems to be malformed." +
-                                " The file either has less/more commas or values in it." +
-                                " Please correct it and try again.");
-                    }
-                }
+//                }else if(project.equals("Project3")){
+//                    if (line != null && !line.isEmpty() && countDelimiters(line) == 4 && lineFromFile.length == 5) {
+//                        appointment.setOwner(checkNullInsideFile(lineFromFile[0], "owner name"));
+//                        appointment.setDescription(checkNullInsideFile(lineFromFile[1], "description"));
+//                        appointment.setBeginTimeString(checkDateTimeFormatWithAmPmInFile(checkNullInsideFile(lineFromFile[2], "beginTime"), "beginTime"));
+//                        appointment.setEndTimeString(checkDateTimeFormatWithAmPmInFile(checkNullInsideFile(lineFromFile[3], "endTime"), "endTime"));
+//                        appointment.setDuration(Integer.parseInt(checkNullInsideFile(lineFromFile[4], "duration")));
+//                        appointmentBook.setOwnerName(appointment.getOwner());
+//                        appointmentBook.addAppointment(appointment);
+//
+//                    } else {
+//                        throw new IOException("The file '"+filename+ "'seems to be malformed." +
+//                                " The file either has less/more commas or values in it." +
+//                                " Please correct it and try again.");
+//                    }
+//                }
 
             }
         }  catch (ParseException|IOException e) {

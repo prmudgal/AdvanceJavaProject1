@@ -23,26 +23,39 @@ public class PrettyPrinter implements AppointmentBookDumper {
 
     @Override
     public void dump(AbstractAppointmentBook abstractAppointmentBook) throws IOException {
+        AbstractAppointmentBook<Appointment> abstractAppointmentBook1 =new AppointmentBook();
         try {
-            //Whatever the file path is.
-            File file = new File(filename);
-            FileOutputStream is = new FileOutputStream(file);
-            OutputStreamWriter osw = new OutputStreamWriter(is);
-            BufferedWriter w = new BufferedWriter(osw);
 
-           /* Set<Appointment> toRetain = new HashSet<Appointment>();
+            Set<Appointment> toRetain = new HashSet<Appointment>();
             toRetain.addAll(abstractAppointmentBook.getAppointments());
-            abstractAppointmentBook=new AppointmentBook();
+            System.out.println("ggg" + toRetain.size());
             for(Appointment app:toRetain) {
-                abstractAppointmentBook.addAppointment(app);
-            }*/
-
-            Collections.sort((ArrayList<Appointment>)(abstractAppointmentBook.getAppointments()));
-//            System.out.println(toRetain.size()+ " sadasdd");
-            for(Appointment appointment:( (ArrayList<Appointment>)(abstractAppointmentBook.getAppointments()))){
-                writeToFile(w, appointment);
+                abstractAppointmentBook1.addAppointment(app);
             }
-            w.close();
+            System.out.println("ggg1 : "+ abstractAppointmentBook.getAppointments().size());
+            Collections.sort((ArrayList<Appointment>)(abstractAppointmentBook1.getAppointments()));
+            if(!filename.equals("-")) {
+                //Whatever the file path is.
+                File file = new File(filename);
+                FileOutputStream is = new FileOutputStream(file);
+                OutputStreamWriter osw = new OutputStreamWriter(is);
+                BufferedWriter w = new BufferedWriter(osw);
+
+
+
+                System.out.println("fff" + abstractAppointmentBook1.getAppointments().size());
+
+//            System.out.println(toRetain.size()+ " sadasdd");
+                for (Appointment appointment : ((ArrayList<Appointment>) (abstractAppointmentBook1.getAppointments()))) {
+                    writeToFile(w, appointment);
+                }
+                w.close();
+            }else{
+                System.out.println("Inside else");
+                for (Appointment appointment : ((ArrayList<Appointment>) (abstractAppointmentBook1.getAppointments()))) {
+                    System.out.println(appointment.getOwner() + " has "+ appointment.getDescription() + " from '"+ appointment.getBeginTime()+ "' to '"+ appointment.getEndTime() + "' for "+ (appointment.getEndTime().getTime() - appointment.getBeginTime().getTime())/(60 * 1000)  + " minutes.");
+                }
+            }
         } catch (IOException e) {
             System.out.println(e.getMessage());
             System.err.println("Problem writing to the file :" + filename);
@@ -58,19 +71,19 @@ public class PrettyPrinter implements AppointmentBookDumper {
      */
     private static void writeToFile(BufferedWriter w, Appointment appointment) throws IOException {
         w.write(appointment.getOwner());
-        w.write(",");
+        w.write(" has ");
         w.write(appointment.getDescription());
-        w.write(",");
-        w.write(appointment.getBeginTimeString());
-        w.write(",");
-        w.write(appointment.getEndTimeString());
-        w.write(",");
+        w.write(" from '");
+        w.write(String.valueOf(appointment.getBeginTime()));
+        w.write("' to '");
+        w.write(String.valueOf(appointment.getEndTime()));
+        w.write("' for ");
         w.write(String.valueOf(getDuration(appointment)));
+        w.write(" minutes.");
         w.newLine();
     }
 
     public static long getDuration(Appointment appointment){
-        System.out.println(" time : "+ (appointment.getEndTime().getTime() - appointment.getBeginTime().getTime())/(60 * 1000));
        return  (appointment.getEndTime().getTime() - appointment.getBeginTime().getTime())/(60 * 1000);
     }
 }

@@ -56,15 +56,18 @@ public class Project3 {
                                     System.out.println("Written appointment to file : " + prettyFilename);
                                 }
                             }else{
-                                System.out.println("Printing to standard out");
+
                                 appointmentBook = parseAndPrepareTheContentsOfFile(prettyFilename, stockArr);
-                                for(Appointment appointment:appointmentBook.getAppointments()) {
-                                    System.out.println(" Owner name : " + appointment.getOwner());
-                                    System.out.println(" Description : "+ appointment.getDescription());
-                                    System.out.println(" Begin Time : "+ appointment.getBeginTime());
-                                    System.out.println(" End Time : "+ appointment.getEndTime());
-                                    System.out.println(" Duration of meeting : "+ (appointment.getEndTime().getTime() - appointment.getBeginTime().getTime())/(60 * 1000)  + " minutes.");
-                                }
+                                System.out.println("Printing to standard out");
+                                PrettyPrinter prettyPrinter =new PrettyPrinter(prettyFilename);
+                                prettyPrinter.dump(appointmentBook);
+//                                for(Appointment appointment:appointmentBook.getAppointments()) {
+//                                    System.out.println(" Owner name : " + appointment.getOwner());
+//                                    System.out.println(" Description : "+ appointment.getDescription());
+//                                    System.out.println(" Begin Time : "+ appointment.getBeginTime());
+//                                    System.out.println(" End Time : "+ appointment.getEndTime());
+//                                    System.out.println(" Duration of meeting : "+ (appointment.getEndTime().getTime() - appointment.getBeginTime().getTime())/(60 * 1000)  + " minutes.");
+//                                }
 
                             }
 //                            appointmentBook= Project2.parseCommandLineArgs(stockArr);
@@ -100,29 +103,31 @@ public class Project3 {
         AbstractAppointmentBook appointmentBook = new AppointmentBook();
         ArrayList<String> arrayList = new ArrayList<String>(Arrays.asList(args));
         if (arrayList.contains(Constants.TEXTFILE)) {
-            Project2.parseCommandLineArgs(args);
-            int index = arrayList.indexOf(Constants.TEXTFILE);
-            String textFilename = arrayList.get(index + 1);
-            arrayList.remove(index + 1);
-            arrayList.remove(Constants.TEXTFILE);
-            String[] stockArr = new String[arrayList.size()];
-            stockArr = arrayList.toArray(new String[arrayList.size()]);
-            if(!prettyFilename.equals("-")) {
-                TextParser textParser = new TextParser(prettyFilename, (AppointmentBook) appointmentBook, "Project3");
-                appointmentBook = textParser.parse();
-                appointmentBook = project1.prepareAppointmentBook(stockArr, (AppointmentBook) appointmentBook);
-            }else{
-                appointmentBook=project1.prepareAppointmentBook(stockArr,(AppointmentBook )appointmentBook);
-            }
+            appointmentBook=Project2.parseCommandLineArgs(args);
+//            int index = arrayList.indexOf(Constants.TEXTFILE);
+//            String textFilename = arrayList.get(index + 1);
+//            arrayList.remove(index + 1);
+//            arrayList.remove(Constants.TEXTFILE);
+//            String[] stockArr = new String[arrayList.size()];
+//            stockArr = arrayList.toArray(new String[arrayList.size()]);
+//            if(!prettyFilename.equals("-")) {
+//                TextParser textParser = new TextParser(prettyFilename, (AppointmentBook) appointmentBook);
+//                appointmentBook = textParser.parse();
+//                appointmentBook = project1.prepareAppointmentBook(stockArr, (AppointmentBook) appointmentBook);
+//            }else{
+//                appointmentBook=project1.prepareAppointmentBook(stockArr,(AppointmentBook )appointmentBook);
+//            }
 
         }else{
-            if(!prettyFilename.equals("-")) {
-                TextParser textParser = new TextParser(prettyFilename, (AppointmentBook) appointmentBook, "Project3");
-                appointmentBook = textParser.parse();
-                appointmentBook = project1.prepareAppointmentBook(args, (AppointmentBook) appointmentBook);
-            }else{
-                appointmentBook=project1.prepareAppointmentBook(args,(AppointmentBook )appointmentBook);
-            }
+//            if(!prettyFilename.equals("-")) {
+//                TextParser textParser = new TextParser(prettyFilename, (AppointmentBook) appointmentBook);
+//                appointmentBook = textParser.parse();
+//                appointmentBook = project1.prepareAppointmentBook(args, (AppointmentBook) appointmentBook);
+//            }else{
+//                appointmentBook=project1.prepareAppointmentBook(args,(AppointmentBook )appointmentBook);
+//            }
+
+            System.out.println(" There is no file provided for the appointment.");
         }
         return (AppointmentBook) appointmentBook;
     }

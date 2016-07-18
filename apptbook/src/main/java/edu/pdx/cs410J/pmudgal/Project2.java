@@ -94,7 +94,7 @@ public class Project2 {
     public static AppointmentBook parseAndPrepareTheContentsOfFile(String filename, String[] args) throws Exception {
         Project1 project1 =new Project1();
         AbstractAppointmentBook appointmentBook = new AppointmentBook();
-        TextParser textParser = new TextParser(filename, (AppointmentBook) appointmentBook, "Project2");
+        TextParser textParser = new TextParser(filename, (AppointmentBook) appointmentBook);
         appointmentBook = textParser.parse();
         appointmentBook = project1.prepareAppointmentBook(args, (AppointmentBook) appointmentBook);
         return (AppointmentBook) appointmentBook;
