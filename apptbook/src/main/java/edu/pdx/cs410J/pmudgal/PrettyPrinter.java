@@ -5,10 +5,7 @@ import edu.pdx.cs410J.AbstractAppointmentBook;
 import edu.pdx.cs410J.AppointmentBookDumper;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Created by Priyanka on 7/15/2016.
@@ -23,27 +20,27 @@ public class PrettyPrinter implements AppointmentBookDumper {
 
     @Override
     public void dump(AbstractAppointmentBook abstractAppointmentBook) throws IOException {
-        AbstractAppointmentBook<Appointment> abstractAppointmentBook1 =new AppointmentBook();
+//        AbstractAppointmentBook<Appointment> abstractAppointmentBook1 =new AppointmentBook();
         try {
 
-            Set<Appointment> toRetain = new HashSet<Appointment>();
+            Set<Appointment> toRetain = new TreeSet<>();
             toRetain.addAll(abstractAppointmentBook.getAppointments());
-            for(Appointment app:toRetain) {
-                abstractAppointmentBook1.addAppointment(app);
-            }
-            Collections.sort((ArrayList<Appointment>)(abstractAppointmentBook1.getAppointments()));
+//            for(Appointment app:toRetain) {
+//                abstractAppointmentBook1.addAppointment(app);
+//            }
+//            Collections.sort((ArrayList<Appointment>)(abstractAppointmentBook1.getAppointments()));
             if(!filename.equals("-")) {
                 //Whatever the file path is.
                 File file = new File(filename);
                 FileOutputStream is = new FileOutputStream(file);
                 OutputStreamWriter osw = new OutputStreamWriter(is);
                 BufferedWriter w = new BufferedWriter(osw);
-                for (Appointment appointment : ((ArrayList<Appointment>) (abstractAppointmentBook1.getAppointments()))) {
+                for (Appointment appointment : (toRetain)) {
                     writeToFile(w, appointment);
                 }
                 w.close();
             }else{
-                for (Appointment appointment : ((ArrayList<Appointment>) (abstractAppointmentBook1.getAppointments()))) {
+                for (Appointment appointment : (toRetain)) {
                     System.out.println("'"+appointment.getOwner() + "' has '"+ appointment.getDescription() + "' from '"+ appointment.getBeginTime()+ "' to '"+ appointment.getEndTime() + "' for "+ (appointment.getEndTime().getTime() - appointment.getBeginTime().getTime())/(60 * 1000)  + " minutes.");
                 }
             }
