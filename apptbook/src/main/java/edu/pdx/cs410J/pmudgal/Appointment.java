@@ -166,6 +166,11 @@ public class Appointment extends AbstractAppointment implements Comparable<Appoi
       }
   }
 
+    /**
+     * This is overridden method from Object class
+     * @param o : Object
+     * @return true or false
+     */
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
@@ -181,6 +186,10 @@ public class Appointment extends AbstractAppointment implements Comparable<Appoi
 
   }
 
+    /**
+     * This is overridden method from Object class
+     * @return the hashcode for the object
+     */
   @Override
   public int hashCode() {
     int result = description.hashCode();
@@ -191,6 +200,12 @@ public class Appointment extends AbstractAppointment implements Comparable<Appoi
     return result;
   }
 
+    /**
+     * Overridden method from comparator
+     * @param o1 : Appointment 1
+     * @param o2 : Appointment 2
+     * @return 1/-1/0
+     */
   @Override
   public int compare(Appointment o1, Appointment o2) {
     if(o1.getBeginTime().compareTo(o2.getBeginTime())>0){
@@ -211,10 +226,18 @@ public class Appointment extends AbstractAppointment implements Comparable<Appoi
 
   }
 
+    /**
+     * Getter for duration or meeting
+     * @return the no of minutes
+     */
   public int getDuration() {
     return duration;
   }
 
+    /**
+     * Setter for duration
+     * @param duration : duration of appointment in minutes
+     */
   public void setDuration(int duration) {
     this.duration = duration;
   }
