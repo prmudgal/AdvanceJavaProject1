@@ -10,7 +10,7 @@ import java.util.Date;
  * This class contains the properties required for an appointment
  * namely: description, owner, beginTimeString, endTimeString and their getter and setters
  */
-public class Appointment extends AbstractAppointment implements Comparable<Appointment>, Comparator<Appointment>{
+public class Appointment extends AbstractAppointment implements Comparable<Appointment>{
 
   /**
    * The properties: description, owner, beginTimeString, endTimeString
@@ -33,13 +33,13 @@ public class Appointment extends AbstractAppointment implements Comparable<Appoi
      */
   @Override
   public String getBeginTimeString() {
-    /*String formattedBeginDate = null;
+    String formattedBeginDate = null;
     try {
-      formattedBeginDate = DateFormat.getDateInstance(DateFormat.SHORT).format(sdf.parse(beginTimeString));
+      formattedBeginDate = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT).format(sdf.parse(beginTimeString));
     } catch (ParseException e) {
       e.printStackTrace();
-    }*/
-    return beginTimeString;
+    }
+    return formattedBeginDate;
   }
 
 
@@ -51,12 +51,12 @@ public class Appointment extends AbstractAppointment implements Comparable<Appoi
   @Override
   public String getEndTimeString() {
     String formattedEndDate = null;
-//    try {
-//      formattedEndDate = DateFormat.getDateInstance(DateFormat.SHORT).format(sdf.parse(endTimeString));
-//    } catch (ParseException e) {
-//      e.printStackTrace();
-//    }
-    return endTimeString;
+    try {
+      formattedEndDate = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT).format(sdf.parse(endTimeString));
+    } catch (ParseException e) {
+      e.printStackTrace();
+    }
+    return formattedEndDate;
   }
 
   /**
@@ -143,9 +143,7 @@ public class Appointment extends AbstractAppointment implements Comparable<Appoi
   /**
    * Overridden method to compare the values
    * @param o param1 to compare
-   * @return status 1 if param1>param2
-   * -1 if param1<param2
-   * 0 if param1 == param2
+   * @return status 1/-1/0 if param1 is greater than param2 / param1 is less than param2 / param1 is equal to param2
    */
   @Override
   public int compareTo(Appointment o) {
@@ -200,31 +198,8 @@ public class Appointment extends AbstractAppointment implements Comparable<Appoi
     return result;
   }
 
-    /**
-     * Overridden method from comparator
-     * @param o1 : Appointment 1
-     * @param o2 : Appointment 2
-     * @return 1/-1/0
-     */
-  @Override
-  public int compare(Appointment o1, Appointment o2) {
-    if(o1.getBeginTime().compareTo(o2.getBeginTime())>0){
-      return 1;
-    }else if (o1.getBeginTime().compareTo(o2.getBeginTime())<0){
-      return -1;
-    } else if(o1.getEndTime().compareTo(o2.getEndTime())>0){
-      return 1;
-    } else if(o1.getEndTime().compareTo(o2.getEndTime())<0){
-      return  -1;
-    } else if (o1.getDescription().compareTo(o2.getDescription()) > 0) {
-      return 1;
-    } else if (o1.getDescription().compareTo(o2.getDescription()) < 0) {
-      return -1;
-    } else{
-      return 0;
-    }
 
-  }
+
 
     /**
      * Getter for duration or meeting

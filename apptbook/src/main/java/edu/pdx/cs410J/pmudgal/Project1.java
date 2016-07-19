@@ -73,10 +73,10 @@ public class Project1 {
                     }
                     appointmentBook.addAppointment(appointment);
                     System.out.println(appointment.toString());
-                } else if (args.length - i < 6) {
+                } else if (args.length - i < 8) {
                     System.out.println("Some arguments are missing. Please provide complete arguments : owner description beginDateTime endDateTime");
                     System.exit(1);
-                } else if (args.length - i > 6) {
+                } else if (args.length - i > 8) {
                     System.out.println("There are extra arguments provided than required arguments.\n" +
                             Constants.PROVIDE_ARG);
                     System.exit(1);

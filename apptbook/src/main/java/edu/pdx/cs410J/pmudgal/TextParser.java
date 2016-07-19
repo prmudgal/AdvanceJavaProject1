@@ -161,15 +161,16 @@ public class TextParser implements AppointmentBookParser {
      * This method also check for invalid dates e.g. 13/01/2015 or 12/40/2015.
      * Also enforces the year has to pass with 4 digits.
      * @param value : the date and time
+     * @param fieldName: the field name such as owner name/desciption.
      * @return : the correctly formatted date and time
      * @throws ParseException : Exception while parsing the date and time
      */
     public static String checkDateTimeFormatWithAmPmInFile(String value, String fieldName) throws ParseException {
-        if (value == null || !value.matches("^\\d{1,2}/\\d{1,2}/\\d{4} \\d{1,2}:\\d{2} [aApP][mM]$")) {
+        if (value == null || !value.matches("^\\d{1,2}/\\d{1,2}/\\d{2} \\d{1,2}:\\d{2} [aApP][mM]$")) {
             System.out.println("The date and time for "+ fieldName+" in file is not in format mm/dd/yyyy hh:mm am/pm. Please correct it and try again");
             System.exit(1);
         }else{
-            SimpleDateFormat df = new SimpleDateFormat("MM/dd/yyyy hh:mm a");
+            SimpleDateFormat df = new SimpleDateFormat("MM/dd/yy hh:mm a");
             df.setLenient(false);
             df.parse(value);
         }

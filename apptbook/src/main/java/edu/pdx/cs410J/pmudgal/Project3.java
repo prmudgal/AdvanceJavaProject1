@@ -1,20 +1,16 @@
 package edu.pdx.cs410J.pmudgal;
 
 import edu.pdx.cs410J.AbstractAppointmentBook;
-import edu.pdx.cs410J.ParserException;
 
 import java.io.File;
 import java.io.IOException;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.Date;
 
 /**
- * Created by Vijay on 7/15/2016.
+ * Created by Priyanka on 7/15/2016.
  */
 public class Project3 {
 
@@ -48,12 +44,12 @@ public class Project3 {
                                     appointmentBook = parseAndPrepareTheContentsOfFile(prettyFilename, stockArr);
                                     PrettyPrinter prettyPrinter =new PrettyPrinter(prettyFilename);
                                     prettyPrinter.dump(appointmentBook);
-                                    System.out.println("Created new file : " + prettyFilename);
+                                    System.out.println("Created new file for sorted appointments: " + prettyFilename);
                                 } else {
                                     appointmentBook = parseAndPrepareTheContentsOfFile(prettyFilename, stockArr);
                                     PrettyPrinter prettyPrinter =new PrettyPrinter(prettyFilename);
                                     prettyPrinter.dump(appointmentBook);
-                                    System.out.println("Written appointment to file : " + prettyFilename);
+                                    System.out.println("Written  sorted appointment to file : " + prettyFilename);
                                 }
                             }else{
 
@@ -127,7 +123,7 @@ public class Project3 {
 //                appointmentBook=project1.prepareAppointmentBook(args,(AppointmentBook )appointmentBook);
 //            }
 
-            System.out.println(" There is no file provided for the appointment.");
+            throw new Exception(" There is no file provided for the appointment.");
         }
         return (AppointmentBook) appointmentBook;
     }

@@ -28,11 +28,9 @@ public class PrettyPrinter implements AppointmentBookDumper {
 
             Set<Appointment> toRetain = new HashSet<Appointment>();
             toRetain.addAll(abstractAppointmentBook.getAppointments());
-            System.out.println("ggg" + toRetain.size());
             for(Appointment app:toRetain) {
                 abstractAppointmentBook1.addAppointment(app);
             }
-            System.out.println("ggg1 : "+ abstractAppointmentBook.getAppointments().size());
             Collections.sort((ArrayList<Appointment>)(abstractAppointmentBook1.getAppointments()));
             if(!filename.equals("-")) {
                 //Whatever the file path is.
@@ -40,20 +38,13 @@ public class PrettyPrinter implements AppointmentBookDumper {
                 FileOutputStream is = new FileOutputStream(file);
                 OutputStreamWriter osw = new OutputStreamWriter(is);
                 BufferedWriter w = new BufferedWriter(osw);
-
-
-
-                System.out.println("fff" + abstractAppointmentBook1.getAppointments().size());
-
-//            System.out.println(toRetain.size()+ " sadasdd");
                 for (Appointment appointment : ((ArrayList<Appointment>) (abstractAppointmentBook1.getAppointments()))) {
                     writeToFile(w, appointment);
                 }
                 w.close();
             }else{
-                System.out.println("Inside else");
                 for (Appointment appointment : ((ArrayList<Appointment>) (abstractAppointmentBook1.getAppointments()))) {
-                    System.out.println(appointment.getOwner() + " has "+ appointment.getDescription() + " from '"+ appointment.getBeginTime()+ "' to '"+ appointment.getEndTime() + "' for "+ (appointment.getEndTime().getTime() - appointment.getBeginTime().getTime())/(60 * 1000)  + " minutes.");
+                    System.out.println("'"+appointment.getOwner() + "' has '"+ appointment.getDescription() + "' from '"+ appointment.getBeginTime()+ "' to '"+ appointment.getEndTime() + "' for "+ (appointment.getEndTime().getTime() - appointment.getBeginTime().getTime())/(60 * 1000)  + " minutes.");
                 }
             }
         } catch (IOException e) {
@@ -70,10 +61,11 @@ public class PrettyPrinter implements AppointmentBookDumper {
      * @throws IOException : handles while writing file.
      */
     private static void writeToFile(BufferedWriter w, Appointment appointment) throws IOException {
+        w.write("'");
         w.write(appointment.getOwner());
-        w.write(" has ");
+        w.write("' has '");
         w.write(appointment.getDescription());
-        w.write(" from '");
+        w.write("' from '");
         w.write(String.valueOf(appointment.getBeginTime()));
         w.write("' to '");
         w.write(String.valueOf(appointment.getEndTime()));

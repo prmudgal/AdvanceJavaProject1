@@ -30,7 +30,8 @@ public class Project2 {
      * dump() method of TextDumper.
      * If command line arguments does not have "-textfile" option,
      * the project processes same as Project 1.
-     * @param args : Command line arguments passed.
+     * @param args : Command line args
+     * @return AppointmentBook
      */
     public static AppointmentBook parseCommandLineArgs(String[] args) {
         Project1 project1=new Project1();
