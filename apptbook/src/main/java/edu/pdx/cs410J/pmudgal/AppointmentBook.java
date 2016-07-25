@@ -4,55 +4,38 @@ import edu.pdx.cs410J.AbstractAppointmentBook;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Comparator;
+import java.util.List;
 
 /**
- * Created by Priyanka on 6/27/2016.
- * Appointment Book which contains the appointment's list
+ * Created by Priyanka on 7/21/2016.
  */
-public class AppointmentBook extends AbstractAppointmentBook<Appointment> {
-    /**
-     * List of Appointment
-     */
-    private ArrayList<Appointment> appointments = new ArrayList<Appointment>();
+public class AppointmentBook extends AbstractAppointmentBook<Appointment>{
 
-    private String ownerName;
+    public void setOwner(String owner) {
+        this.owner = owner;
+    }
 
-    /**
-     * Getter for ownerName
-     * @return ownerName
-     */
+    private String owner;
+
+    private List<Appointment> appointmentBook=new ArrayList<Appointment>();
+
+    public AppointmentBook(String owner){
+        this.owner=owner;
+    }
     @Override
     public String getOwnerName() {
-        return ownerName;
+        return this.owner;
     }
 
-    /**
-     * Getter for the list of Appointments
-     * @return appointments
-     */
     @Override
     public Collection<Appointment> getAppointments() {
-        return appointments;
+        return appointmentBook;
     }
 
-    /**
-     * Adds the appointments to the appointment List
-     * @param t : Appointment
-     */
     @Override
-    public void addAppointment(Appointment t) {
-        appointments.add(t);
-
+    public void addAppointment(Appointment appointment) {
+    appointmentBook.add(appointment);
     }
-
-    /**
-     * Set of OwnerName
-     * @param ownerName : Owner name
-     */
-    public void setOwnerName(String ownerName) {
-    this.ownerName = ownerName;
-}
 
 
 }

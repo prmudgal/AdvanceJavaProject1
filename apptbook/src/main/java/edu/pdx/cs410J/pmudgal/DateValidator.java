@@ -1,44 +1,32 @@
 package edu.pdx.cs410J.pmudgal;
 
-import java.text.DateFormat;
+import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
-public class DateValidator
-{
-    private static final DateFormat DEFAULT_FORMATTER;
-
-    static
-    {
-        DEFAULT_FORMATTER = new SimpleDateFormat("MM/dd/yyyy HH:mm");
-        DEFAULT_FORMATTER.setLenient(false);
-    }
-
-    public static void main(String[] args)
-    {
-//        for (String dateString : args)
-//        {
-            try
-            {
-convertDateString("02/03/2016 16:06");
-            }
-            catch (ParseException e)
-            {
-                System.out.println("could not parse " );
-            }
-//        }
-    }
-
-    public static Date convertDateString(String dateString) throws ParseException
-    {
-        if (dateString.matches("^\\d{1,2}/\\d{1,2}/\\d{4} \\d{1,2}:\\d{2}$")) {
-            System.out.println("Not matched" +DEFAULT_FORMATTER.parse(dateString));
-            return DEFAULT_FORMATTER.parse(dateString);
-
+/**
+ * Created by Vijay on 7/23/2016.
+ */
+public class DateValidator {
+    /**
+     * *This method checks for the correct format of date and time.
+     *The date and time should be in format "mm/dd/yyyy hh:mm am/pm' or "m/d/yyyy hh:mm am/pm".
+     * This method also check for invalid dates e.g. 13/01/2015 or 12/40/2015.
+     * Also enforces the year has to pass with 4 digits.
+     * @param value : the date and time
+     * @param pw
+     * @return : the correctly formatted date and time
+     * @throws ParseException : Exception while parsing the date and time
+     */
+    public static String checkDateTimeFormat(String value, PrintWriter pw) throws ParseException {
+        if (value == null || !value.matches("^\\d{1,2}/\\d{1,2}/\\d{4} \\d{1,2}:\\d{2} [aApP][mM]$")) {
+            pw.println("Please provide the date and time in format mm/dd/yyyy hh:mm");
+            return "false";
         }else{
-            System.out.println("else");
+            SimpleDateFormat df = new SimpleDateFormat("MM/dd/yyyy hh:mm a");
+            df.setLenient(false);
+            df.parse(value);
         }
-        return new Date();
+        return value;
     }
 }
