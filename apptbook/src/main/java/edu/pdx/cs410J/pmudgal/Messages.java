@@ -8,7 +8,7 @@ public class Messages
 {
     public static String getMappingCount( int count )
     {
-        return String.format( "Server contains %d key/value pairs", count );
+        return String.format( "Server contains %d Appointments", count );
     }
 
     public static String formatKeyValuePair( String key, String value )

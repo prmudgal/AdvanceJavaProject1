@@ -48,7 +48,9 @@ public class AppointmentBookServlet extends HttpServlet
                     appointmentBook.addAppointment(appointment);
                 }
             }
-            System.out.println("sssdd + "+ appointmentBook.getAppointments().size());
+            if(appointmentBook.getAppointments().size()==0){
+                response.sendError(HttpServletResponse.SC_NO_CONTENT,"There are no appointment");
+            }
         }
         prettyPrint(appointmentBook, response.getWriter());
         response.setStatus(HttpServletResponse.SC_OK);

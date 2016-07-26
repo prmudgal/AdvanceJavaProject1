@@ -34,15 +34,17 @@
 
 <div>
     <form method="get" action="appointments">
-        List value for key <input name="key" type="text" size="10" title="key"/>
+        List value for key <input name="owner" type="text" size="10" title="owner"/>
         <input type="submit" value="Submit"/>
     </form>
 </div>
 
 <div>
     <form method="post" action="appointments">
-        Create a new key/value pair <input name="key" type="text" size="10" title="key"/> /
-        <input name="value" type="text" size="10" title="value"/>
+        Create a new key/value pair <input name="owner" type="text" size="10" title="owner"/> /
+        <input name="description" type="text" size="10" title="value"/>
+        <input name="beginTime" type="dateTime"  title="value"/>
+        <input name="endTime" type="dateTime" title="value"/>
         <input type="submit" value="Submit"/>
     </form>
 </div>

@@ -18,10 +18,12 @@ public class PrettyPrinter implements AppointmentBookDumper {
     }
     @Override
     public void dump(AbstractAppointmentBook abstractAppointmentBook) throws IOException {
-        if (abstractAppointmentBook != null) {
+        if (abstractAppointmentBook != null && abstractAppointmentBook.getAppointments().size()!=0) {
             writer.println(abstractAppointmentBook.getAppointments());
+//            System.out.println(abstractAppointmentBook.getAppointments());
         }else{
-            writer.println("No appointment");
+            writer.println(Messages.getMappingCount(0));
+//            System.out.println(Messages.getMappingCount(0));
         }
     }
 }
