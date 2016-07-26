@@ -19,21 +19,42 @@ public class AppointmentBook extends AbstractAppointmentBook<Appointment>{
 
     private List<Appointment> appointmentBook=new ArrayList<Appointment>();
 
+    /**
+     * Parameterized constructor
+     * @param owner : Owner name
+     */
     public AppointmentBook(String owner){
         this.owner=owner;
     }
+
+    /**
+     * No parameterized constructor
+     */
     public AppointmentBook(){
     }
+
+    /**
+     * Getter for owner name
+     * @return :owner
+     */
     @Override
     public String getOwnerName() {
         return this.owner;
     }
 
+    /**
+     * Getter for appointment
+     * @return : appointmentBook
+     */
     @Override
     public Collection<Appointment> getAppointments() {
         return appointmentBook;
     }
 
+    /**
+     * Adds appointment
+     * @param appointment : appointment
+     */
     @Override
     public void addAppointment(Appointment appointment) {
     appointmentBook.add(appointment);

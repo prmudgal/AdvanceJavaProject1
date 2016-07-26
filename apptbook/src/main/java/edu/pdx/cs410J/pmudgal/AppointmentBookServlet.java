@@ -1,7 +1,5 @@
 package edu.pdx.cs410J.pmudgal;
 
-import com.google.common.annotations.VisibleForTesting;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -23,12 +21,15 @@ public class AppointmentBookServlet extends HttpServlet
 {
     private final Map<String, AppointmentBook> appointmentBooks = new HashMap<>();
 
-
     /**
      * Handles an HTTP GET request from a client by writing the value of the key
-     * specified in the "key" HTTP parameter to the HTTP response.  If the "key"
+     * specified in the "owner" HTTP parameter to the HTTP response.  If the "owner"
      * parameter is not specified, all of the key/value pairs are written to the
      * HTTP response.
+     *  @param request : HttpServletRequest
+     * @param response :HttpServletResponse
+     * @throws ServletException : Any Servlet Exception
+     * @throws IOException : Any Exception while posting
      */
     @Override
     protected void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException
@@ -39,28 +40,42 @@ public class AppointmentBookServlet extends HttpServlet
         AppointmentBook appointmentBook = getAppointmentsBookForOwner(owner);
         String beginTime=getParameter("beginTime",request);
         String endTime=getParameter("endTime",request);
-        if(endTime != null && beginTime !=null){
+        if(endTime != null && beginTime !=null ){
+            if(appointmentBook!=null&& appointmentBook.getAppointments().size()!=0) {
 
-          List<Appointment> appointmentList = new ArrayList<Appointment>(appointmentBook.getAppointments());
-            appointmentBook=new AppointmentBook(owner);
-            for (Appointment appointment:appointmentList){
-                if(appointment.getBeginTimeString().compareTo(beginTime)>=0 && appointment.getEndTimeString().compareTo(endTime)<=0){
-                    appointmentBook.addAppointment(appointment);
+                List<Appointment> appointmentList = new ArrayList<Appointment>(appointmentBook.getAppointments());
+                appointmentBook = new AppointmentBook(owner);
+                for (Appointment appointment : appointmentList) {
+                    if (appointment.getBeginTimeString().compareTo(beginTime) >= 0 && appointment.getEndTimeString().compareTo(endTime) <= 0) {
+                        appointmentBook.addAppointment(appointment);
+                    }
                 }
-            }
-            if(appointmentBook.getAppointments().size()==0){
-                response.sendError(HttpServletResponse.SC_NO_CONTENT,"There are no appointment");
+            }else{
+                System.out.println("app book is null");
+                response.sendError(HttpServletResponse.SC_NO_CONTENT,Messages.getMappingCount(0));
+                return;
             }
         }
         prettyPrint(appointmentBook, response.getWriter());
         response.setStatus(HttpServletResponse.SC_OK);
     }
 
+    /**
+     * Printes the appointmentBook
+     * @param appointmentBook : Appointment Book containing appointments
+     * @param pw : PrintWriter
+     * @throws IOException : Any exception while writing the appointment
+     */
     private void prettyPrint(AppointmentBook appointmentBook, PrintWriter pw) throws IOException {
         PrettyPrinter pretty = new PrettyPrinter(pw);
         pretty.dump(appointmentBook);
     }
 
+    /**
+     * This method returns the appointment Book for an owner
+     * @param owner : Owner name
+     * @return Appointment Book
+     */
     private AppointmentBook getAppointmentsBookForOwner(String owner) {
     return this.appointmentBooks.get(owner);
     }
@@ -69,6 +84,10 @@ public class AppointmentBookServlet extends HttpServlet
      * Handles an HTTP POST request by storing the key/value pair specified by the
      * "key" and "value" request parameters.  It writes the key/value pair to the
      * HTTP response.
+     * @param request : HttpServletRequest
+     * @param response :HttpServletResponse
+     * @throws ServletException : Any Servlet Exception
+     * @throws IOException : Any Exception while posting
      */
     @Override
     protected void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException
@@ -99,7 +118,7 @@ public class AppointmentBookServlet extends HttpServlet
             return;
         }
         AppointmentBook appointmentBook = getAppointmentsBookForOwner(owner);
-
+// If appointment is not having any data or null, new appointment Book is created
         if(appointmentBook ==null){
             appointmentBook= new AppointmentBook(owner);
         }
@@ -118,7 +137,7 @@ public class AppointmentBookServlet extends HttpServlet
         appointmentBook.setOwner(owner);
         appointmentBook.addAppointment(appointment);
         appointmentBooks.put(owner, appointmentBook);
-
+        pw.println(Messages.mappedKeyValue(owner,appointment.toString()));
         response.setStatus( HttpServletResponse.SC_OK);
         } catch (ParseException e) {
             e.printStackTrace();
@@ -145,28 +164,31 @@ public class AppointmentBookServlet extends HttpServlet
     }
 
     /**
-     * Handles an HTTP DELETE request by removing all key/value pairs.  This
+     *  Handles an HTTP DELETE request by removing all key/value pairs.  This
      * behavior is exposed for testing purposes only.  It's probably not
      * something that you'd want a real application to expose.
+     * @param request : HttpServletRequest
+     * @param response :HttpServletResponse
+     * @throws ServletException : Any Servlet Exception
+     * @throws IOException : Any Exception while posting
      */
     @Override
     protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/plain");
-
         this.appointmentBooks.clear();
-
         PrintWriter pw = response.getWriter();
         pw.println(Messages.allMappingsDeleted());
         pw.flush();
-
         response.setStatus(HttpServletResponse.SC_OK);
-
     }
 
     /**
      * Writes an error message about a missing parameter to the HTTP response.
      *
      * The text of the error message is created by {@link Messages#missingRequiredParameter(String)}
+     * @param response : HttpServletResponse
+     * @param parameterName : Missing parameter name
+     * @throws IOException : Any Exception while writing
      */
     private void missingRequiredParameter( HttpServletResponse response, String parameterName )
         throws IOException
@@ -174,10 +196,15 @@ public class AppointmentBookServlet extends HttpServlet
         String message = Messages.missingRequiredParameter(parameterName);
         response.sendError(HttpServletResponse.SC_PRECONDITION_FAILED, message);
     }
+
+
     /**
-     * Writes an error message about a missing parameter to the HTTP response.
+     * * Writes an error message about a missing parameter to the HTTP response.
      *
      * The text of the error message is created by {@link Messages#missingRequiredParameter(String)}
+     * @param response : HttpServletResponse
+     * @param parameterName : beginDate/EndDate parameter name
+     * @throws IOException : Any Exception while writing
      */
     private void notFormattedDate( HttpServletResponse response, String parameterName )
         throws IOException
@@ -186,15 +213,18 @@ public class AppointmentBookServlet extends HttpServlet
         response.sendError(HttpServletResponse.SC_PRECONDITION_FAILED, message);
     }
 
-    /**
-     * Writes the value of the given key to the HTTP response.
+   /* *//**
+     * * Writes the value of the given key to the HTTP response.
      *
      * The text of the message is formatted with {@link Messages#getMappingCount(int)}
      * and {@link Messages#formatKeyValuePair(String, String)}
-     */
+     * @param key : Key
+     * @param response : HttpServletResponse
+     * @throws IOException : IOException
+     *//*
     private void writeValue( String key, HttpServletResponse response ) throws IOException
     {
-        /*String value = this.appointmentBook.get(key);
+        *//*String value = this.appointmentBook.get(key);
 
         PrintWriter pw = response.getWriter();
         pw.println(Messages.getMappingCount( value != null ? 1 : 0 ));
@@ -202,9 +232,9 @@ public class AppointmentBookServlet extends HttpServlet
 
         pw.flush();
 
-        response.setStatus( HttpServletResponse.SC_OK );*/
+        response.setStatus( HttpServletResponse.SC_OK );*//*
     }
-
+*/
     /**
      * Writes all of the key/value pairs to the HTTP response.
      *
@@ -226,8 +256,10 @@ public class AppointmentBookServlet extends HttpServlet
     }
 
     /**
-     * Returns the value of the HTTP request parameter with the given name.
+     * * Returns the value of the HTTP request parameter with the given name.
      *
+     * @param name : Parameter name
+     * @param request : HttpServletRequest
      * @return <code>null</code> if the value of the parameter is
      *         <code>null</code> or is the empty string
      */
@@ -241,12 +273,12 @@ public class AppointmentBookServlet extends HttpServlet
       }
     }
 
-    @VisibleForTesting
+   /* @VisibleForTesting
     void setValueForKey(String key, String value) {
 //        this.appointmentBook.put(key, value);
     }
 
-   /* @VisibleForTesting
+   *//* @VisibleForTesting
     String getValueForKey(String key) {
         throw new UnsupportedEncodingException("I dont work anymore!");
     }*/

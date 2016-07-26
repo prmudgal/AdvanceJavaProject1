@@ -13,9 +13,19 @@ public class PrettyPrinter implements AppointmentBookDumper {
 
     private final PrintWriter writer;
 
+    /**
+     * Parameterized constructor
+     * @param writer : Print Writer
+     */
     public PrettyPrinter(PrintWriter writer){
         this.writer=writer;
     }
+
+    /**
+     * Write the appointments
+     * @param abstractAppointmentBook : AppointmentBook
+     * @throws IOException : Any Exception while writing
+     */
     @Override
     public void dump(AbstractAppointmentBook abstractAppointmentBook) throws IOException {
         if (abstractAppointmentBook != null && abstractAppointmentBook.getAppointments().size()!=0) {

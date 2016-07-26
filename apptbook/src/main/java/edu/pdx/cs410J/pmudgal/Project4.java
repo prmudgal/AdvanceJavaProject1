@@ -2,7 +2,7 @@ package edu.pdx.cs410J.pmudgal;
 
 import edu.pdx.cs410J.web.HttpRequestHelper;
 
-import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.io.PrintStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -14,10 +14,13 @@ import java.util.Arrays;
  * Appointment Book server using REST.
  */
 public class Project4 {
-//    private static AppointmentBook appointmentBook=new AppointmentBook();
 
     public static final String MISSING_ARGS = "Missing command line arguments";
 
+    /**
+     * Main method
+     * @param args : Command line args
+     */
     public static void main(String[] args) {
         String hostName = null;
         String portString = null;
@@ -26,8 +29,9 @@ public class Project4 {
 
         try {
             prepareAppointmentBook(args);
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch ( Exception ex ) {
+            error("While contacting server: " + ex);
+            return;
         }
 
 
@@ -95,100 +99,99 @@ public class Project4 {
     }
 
     /**
-     *
-     * @param args
-     * @throws Exception
+     *This method takes the command line args, parses them and sends them to RestClient.
+     * @param args : Command line args
+     * @throws Exception : Any exception thrown
      */
     private static void prepareAppointmentBook(String[] args) throws Exception {
-//        Appointment appointment = new Appointment();
-        ArrayList<String> argList =new ArrayList<String>(Arrays.asList(args));
-        String host =null;
-        Integer port =null;
-        String owner =null;
-        String description =null;
-        String beginTime =null;
-        String endTime =null;
-        boolean searchFlag=false;
-        if(argList.contains(Constants.README)){
-            displayReadMe(Constants.PROJECT4_README_DESC, 1);
-        } else{
-            if (!argList.contains(Constants.HOST)) {
-                usage( "Missing Host" );
+        try {
+            ArrayList<String> argList = new ArrayList<String>(Arrays.asList(args));
+            String host = null;
+            Integer port = null;
+            String owner = null;
+            String description = null;
+            String beginTime = null;
+            String endTime = null;
+            boolean searchFlag = false;
+            if (argList.contains(Constants.README)) {
+                displayReadMe();
+            } else {
+                if (!argList.contains(Constants.HOST)) {
+                    usage("Missing Host");
 
-            } else if (!argList.contains(Constants.PORT)) {
-                usage( "Missing port" );
-            }
-            int hostIndex= argList.indexOf(Constants.HOST);
-             host = argList.get(hostIndex+1);
-            argList.remove(hostIndex+1);
-            argList.remove(hostIndex);
-            int portIndex=argList.indexOf(Constants.PORT);
-            String portString = argList.get(portIndex+1);
-            argList.remove(portIndex+1);
-            argList.remove(portIndex);
-            if(argList.contains(Constants.SEARCH)){
-                searchFlag=true;
-                argList.remove(argList.indexOf(Constants.SEARCH));
-            }
-            try {
-                port = Integer.parseInt( portString );
-            } catch (NumberFormatException ex) {
-                usage("Port \"" + portString + "\" must be an integer");
-                return;
-            }
-            AppointmentBookRestClient client = new AppointmentBookRestClient(host, port);
-            String[] modifiedArgs = argList.toArray(new String[argList.size()]);
-            for (int i = 0; i < modifiedArgs.length; i++) {
-                if (modifiedArgs[i].startsWith("-") && searchFlag == false) {
-                    if (modifiedArgs[i].contains(Constants.PRINT)) {
-                        System.out.println("Printing the Appointment : " + (modifiedArgs.length > 2 ? modifiedArgs[2] : "No description provided in command line."));
-                        i++;
+                } else if (!argList.contains(Constants.PORT)) {
+                    usage("Missing port");
+                }
+                int hostIndex = argList.indexOf(Constants.HOST);
+                host = argList.get(hostIndex + 1);
+                argList.remove(hostIndex + 1);
+                argList.remove(hostIndex);
+                int portIndex = argList.indexOf(Constants.PORT);
+                String portString = argList.get(portIndex + 1);
+                argList.remove(portIndex + 1);
+                argList.remove(portIndex);
+                if (argList.contains(Constants.SEARCH)) {
+                    searchFlag = true;
+                    argList.remove(argList.indexOf(Constants.SEARCH));
+                }
+                try {
+                    port = Integer.parseInt(portString);
+                } catch (NumberFormatException ex) {
+                    usage("Port \"" + portString + "\" must be an integer");
+                    return;
+                }
+                AppointmentBookRestClient client = new AppointmentBookRestClient(host, port);
+                String[] modifiedArgs = argList.toArray(new String[argList.size()]);
+                for (int i = 0; i < modifiedArgs.length; i++) {
+                    if (modifiedArgs[i].startsWith("-") && searchFlag == false) {
+                        if (modifiedArgs[i].contains(Constants.PRINT)) {
+                            System.out.println("Printing the Appointment : " + (modifiedArgs.length > 2 ? modifiedArgs[2] : "No description provided in command line."));
+                            i++;
+                        } else {
+                            error(modifiedArgs[i] + ": This is not a correct option. Please provide the correct option.");
+                            System.exit(1);
+                        }
+                    }
+                    if (searchFlag == false) {
+                        if (modifiedArgs.length - i == 8) {
+                            owner = validateOwnerName(modifiedArgs[i]);//Checks if the argument starts with "-", it is not considered as owner name
+                            description = (checkNull(modifiedArgs[++i], "description")); //
+                            beginTime = (checkDateTimeFormatWithAmPm(checkNull(modifiedArgs[++i], "beginDateTime").concat(" ").concat(checkNull(modifiedArgs[++i], "beginDateTime")).concat(" ").concat(checkNull(modifiedArgs[++i], "beginDateTime")),"beginDateTime"));
+                            endTime = (checkDateTimeFormatWithAmPm(checkNull(modifiedArgs[++i], "endDateTime").concat(" ").concat(checkNull(modifiedArgs[++i], "endDateTime")).concat(" ").concat(checkNull(modifiedArgs[++i], "endDateTime")),"endDateTime"));
+                        } else if (modifiedArgs.length - i < 8) {
+                            usage(MISSING_ARGS);
+                        } else if (modifiedArgs.length - i > 8) {
+                            usage("Extraneous command line argument: " + modifiedArgs);
+                        }
+
+                        HttpRequestHelper.Response response = client.addKeyValuePair(owner, description, beginTime, endTime);
                     } else {
-                        System.out.println(modifiedArgs[i] + ": This is not a correct option. Please provide the correct option.");
-                        System.exit(1);
+                        if (modifiedArgs.length - i == 7) {
+                            owner = validateOwnerName(modifiedArgs[i]);//Checks if the argument starts with "-", it is not considered as owner name
+                            beginTime = (checkDateTimeFormatWithAmPm(checkNull(modifiedArgs[++i], "beginDateTime").concat(" ").concat(checkNull(modifiedArgs[++i], "beginDateTime")).concat(" ").concat(checkNull(modifiedArgs[++i], "beginDateTime")),"beginDateTime"));
+                            endTime = (checkDateTimeFormatWithAmPm(checkNull(modifiedArgs[++i], "endDateTime").concat(" ").concat(checkNull(modifiedArgs[++i], "endDateTime")).concat(" ").concat(checkNull(modifiedArgs[++i], "endDateTime")),"endDateTime"));
+                        } else if (modifiedArgs.length - i < 7) {
+                            usage(MISSING_ARGS);
+                        } else if (modifiedArgs.length - i > 7) {
+                            usage("Extraneous command line argument: " + modifiedArgs);
+                        }
+                        HttpRequestHelper.Response response = client.getValuesWithSearch(owner, beginTime, endTime);
+                        System.out.println(response.getContent());
                     }
                 }
-                if (searchFlag == false) {
-                    System.out.println(" Inside 8");
-                    if (modifiedArgs.length - i == 8) {
-                        owner = validateOwnerName(modifiedArgs[i]);//Checks if the argument starts with "-", it is not considered as owner name
-                        description = (checkNull(modifiedArgs[++i], "description")); //
-                        beginTime = (checkDateTimeFormatWithAmPm(checkNull(modifiedArgs[++i], "beginDateTime").concat(" ").concat(checkNull(modifiedArgs[++i], "beginDateTime")).concat(" ").concat(checkNull(modifiedArgs[++i], "beginDateTime"))));
-                        endTime = (checkDateTimeFormatWithAmPm(checkNull(modifiedArgs[++i], "endDateTime").concat(" ").concat(checkNull(modifiedArgs[++i], "endDateTime")).concat(" ").concat(checkNull(modifiedArgs[++i], "endDateTime"))));
-                    } else if (modifiedArgs.length - i < 8) {
-                        usage(MISSING_ARGS);
-                    } else if (modifiedArgs.length - i > 8) {
-                        usage("Extraneous command line argument: " + modifiedArgs);
-                    }
-
-                    HttpRequestHelper.Response response=client.addKeyValuePair(owner,description,beginTime,endTime);
-                }else{
-                    System.out.println("Inside 7 ");
-                    if (modifiedArgs.length - i == 7) {
-                        System.out.println("With search option");
-                        System.out.println( " sea " + searchFlag);
-                        owner = validateOwnerName(modifiedArgs[i]);//Checks if the argument starts with "-", it is not considered as owner name
-                        beginTime = (checkDateTimeFormatWithAmPm(checkNull(modifiedArgs[++i], "beginDateTime").concat(" ").concat(checkNull(modifiedArgs[++i], "beginDateTime")).concat(" ").concat(checkNull(modifiedArgs[++i], "beginDateTime"))));
-                        endTime = (checkDateTimeFormatWithAmPm(checkNull(modifiedArgs[++i], "endDateTime").concat(" ").concat(checkNull(modifiedArgs[++i], "endDateTime")).concat(" ").concat(checkNull(modifiedArgs[++i], "endDateTime"))));
-                    } else if (modifiedArgs.length - i < 7) {
-                        usage(MISSING_ARGS);
-                    } else if (modifiedArgs.length - i > 7) {
-                        usage("Extraneous command line argument: " + modifiedArgs);
-                    }
-//                    client.getValues(owner);
-                    HttpRequestHelper.Response response=client.getValuesWithSearch(owner, beginTime, endTime);
-                    System.out.println(response.getContent());
-                }
-
             }
+        }catch ( IOException ex ) {
+            error("While contacting server: " + ex);
+            return;
         }
-
-
     }
 
-    private static void displayReadMe(String project4ReadmeDesc, int status) {
-        System.out.println(project4ReadmeDesc);
-        System.exit(status);
+    /**
+     *  This method prints the README once called.
+     */
+    private static void displayReadMe() {
+        System.out.println(Constants.PROJECT4_README_DESC);
+        System.exit(1);
     }
 
     /**
@@ -204,11 +207,14 @@ public class Project4 {
         }
     }
 
+    /**
+     * This method prints the error message
+     * @param message : Error message
+     */
     private static void error( String message )
     {
         PrintStream err = System.err;
         err.println("** " + message);
-
         System.exit(1);
     }
 
@@ -241,13 +247,13 @@ public class Project4 {
      * This method also check for invalid dates e.g. 13/01/2015 or 12/40/2015.
      * Also enforces the year has to pass with 4 digits.
      * @param value : the date and time
+     * @param fieldName : fieldName
      * @return : the correctly formatted date and time
      * @throws ParseException : Exception while parsing the date and time
      */
-    public static String checkDateTimeFormatWithAmPm(String value) throws ParseException {
+    public static String checkDateTimeFormatWithAmPm(String value, String fieldName) throws ParseException {
         if (value == null || !value.matches("^\\d{1,2}/\\d{1,2}/\\d{4} \\d{1,2}:\\d{2} [aApP][mM]$")) {
-            System.out.println(value + " .....");
-            System.out.println("Please provide the date and time in format mm/dd/yyyy hh:mm");
+            System.out.println(Messages.noFormattedDate(fieldName));
             System.exit(1);
         }else{
             SimpleDateFormat df = new SimpleDateFormat("MM/dd/yyyy hh:mm a");
