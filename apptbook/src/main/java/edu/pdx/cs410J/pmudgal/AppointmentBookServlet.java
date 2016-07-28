@@ -51,8 +51,7 @@ public class AppointmentBookServlet extends HttpServlet
                     }
                 }
             }else{
-                System.out.println("app book is null");
-                response.sendError(HttpServletResponse.SC_PRECONDITION_FAILED,Messages.getMappingCount(0));
+                response.getWriter().println(Messages.getMappingCount(0));
                 return;
             }
         }

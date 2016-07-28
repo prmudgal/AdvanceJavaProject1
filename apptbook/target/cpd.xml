@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd-cpd>
+   <duplication lines="4" tokens="125">
+      <file line="162"
+            path="C:\Users\Vijay\workspace\apptbook\src\main\java\edu\pdx\cs410J\pmudgal\Project4.java"/>
+      <file line="177"
+            path="C:\Users\Vijay\workspace\apptbook\src\main\java\edu\pdx\cs410J\pmudgal\Project4.java"/>
+      <codefragment><![CDATA[                                description = (checkNull(modifiedArgs[++i], "description")); //
+                                beginTime = (checkDateTimeFormatWithAmPm(checkNull(modifiedArgs[++i], "beginDateTime").concat(" ").concat(checkNull(modifiedArgs[++i], "beginDateTime")).concat(" ").concat(checkNull(modifiedArgs[++i], "beginDateTime")), "beginDateTime"));
+                                endTime = (checkDateTimeFormatWithAmPm(checkNull(modifiedArgs[++i], "endDateTime").concat(" ").concat(checkNull(modifiedArgs[++i], "endDateTime")).concat(" ").concat(checkNull(modifiedArgs[++i], "endDateTime")), "endDateTime"));
+                            } else if (modifiedArgs.length - i < 8) {]]></codefragment>
+   </duplication>
+</pmd-cpd>
